@@ -1,3 +1,4 @@
+import { AboutMe } from "./components/pages/about-me";
 import { HeroSection } from "./components/pages/home/hero-section";
 import { KnownTechs } from "./components/pages/known-techs";
 
@@ -6,6 +7,7 @@ export default async function Home() {
     <>
       <HeroSection />
       <KnownTechs />
+      <AboutMe />
     </>
   )
 }
