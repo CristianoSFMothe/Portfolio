@@ -7,7 +7,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 
 export const HighlightedProjects = () => {
   return (
-    <section className="container py-16">
+    <section className="container py-16 text-right">
       <SectionTitle subtitle="destaques" title="Projetos em destaque" />
       <HorizontalDivider className="mb-16" />
 
