@@ -20,7 +20,7 @@ export const KnowTech = ({ tech }: KnownTechProps) => {
     <div
       className={cn(
         "p-6 rounded-lg bg-gray-600/20 text-gray-500 flex flex-col",
-        "gap-2 hover:text-emerald-500 hover:bg-gray-600/30 transition-all"
+        "gap-2 hover:text-emerald-500 hover:bg-gray-600/30 transition-all hover:scale-105"
       )}
     >
       <div className="flex items-center justify-between">

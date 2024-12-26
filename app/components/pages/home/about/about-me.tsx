@@ -1,9 +1,9 @@
 "use client";
 
+import { Button } from "@/app/components/button";
+import { SectionTitle } from "@/app/components/section-title";
 import { cn } from "@/app/libs/utils";
 import Image from "next/image";
-import { SectionTitle } from "../section-title";
-import { Button } from "../button";
 import { FaDownload } from "react-icons/fa";
 
 export const AboutMe = () => {
