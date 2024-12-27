@@ -18,14 +18,13 @@ export const AboutMe = () => {
     <section className="container py-16">
       <SectionTitle subtitle="sobre" title="Um pouco sobre mim" />
 
-      <div className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start">
-        {/* Imagem com visibilidade condicional */}
+      <div id="about" className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start">
         <div
           className={cn(
             "w-[320px] h-[320px] lg:w-[440px] lg:h-[440px]",
             "flex items-center justify-center",
             "rounded-full border-2 border-emerald-500 shadow-2xl",
-            "hidden sm:flex" // Oculta em resoluções abaixo de `sm`
+            "hidden sm:flex"
           )}
         >
           <Image
@@ -81,7 +80,7 @@ export const AboutMe = () => {
           </p>
 
           <Button
-            className="shadow-button w-max mt-6 md:self-start"
+            className="shadow-button w-max mt-6 md:self-start btn-download-cv"
             onClick={handleDownloadCV}
           >
             Download do CV

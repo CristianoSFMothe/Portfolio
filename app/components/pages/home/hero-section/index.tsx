@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/app/components/button";
 import { TechBadge } from "@/app/components/tech-badge";
 import { cn } from "@/app/libs/utils";
@@ -25,6 +27,14 @@ const MOCK_CONTACTS = [
 ];
 
 export const HeroSection = () => {
+  const handleContact = () => {
+    const contactSection = document.querySelector("#contact");
+
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth"})
+    }
+  }
+
   return (
     <section
       className={cn(
@@ -51,7 +61,7 @@ export const HeroSection = () => {
           </div>
 
           <div className="mt-6 lg:mt-10 flex sm:items-center sm:gap-5 flex-col sm:flex-row">
-            <Button className="shadow-button w-max btn-contact-home">
+            <Button className="shadow-button w-max btn-contact-home" onClick={handleContact}>
               Entre em contato
               <HiArrowNarrowRight size={18} />
             </Button>

@@ -1,6 +1,4 @@
 import { cn } from "@/app/libs/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 type NavItemProps = {
   label: string;
@@ -8,20 +6,27 @@ type NavItemProps = {
 };
 
 export const NavItem = ({ label, href }: NavItemProps) => {
-  const pathname = usePathname();
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
 
-  const isActive = pathname === href;
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <Link
+    <a
       href={href}
+      onClick={handleClick}
       className={cn(
         "text-gray-400 flex items-center gap-2 font-medium font-mono",
-        isActive && "text-gray-50"
+        "hover:text-gray-50"
       )}
     >
       <span className="text-emerald-400">#</span>
       {label}
-    </Link>
+    </a>
   );
 };
