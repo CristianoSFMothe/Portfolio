@@ -34,7 +34,7 @@ const getPageData = async (): Promise<HomePageData> => {
 
   return fetchHygraphQuery(
     query,
-    60 * 60 * 24
+    10 // 24 horas
   );
 };
 
@@ -44,7 +44,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection homeInfo={pageData} />
-      <KnownTechs />
+      <KnownTechs techs={pageData.knownTechs} />
       <AboutMe />
       <HighlightedProjects />
       <WorkExperience />

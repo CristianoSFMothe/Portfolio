@@ -1,5 +1,5 @@
 export type KnownTech = {
-  iconSVG: string;
+  iconSvg: string;
   name: string;
   startDate: string;
 }

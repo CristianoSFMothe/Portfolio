@@ -27,7 +27,7 @@ export const ProjectCart = () => {
           Robot Actions
         </h3>
 
-        <p className="text-gray-400 my-6">
+        <p className="text-gray-400 my-6 text-left description-project">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
           similique, voluptate eaque sit nemo ut dolorem fugit voluptates!
           Officia, molestias.
