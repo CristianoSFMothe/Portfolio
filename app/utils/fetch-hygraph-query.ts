@@ -1,4 +1,7 @@
-export const fetchHygraphQuery = async (query: string) => {
+export const fetchHygraphQuery = async (
+  query: string,
+  revalidate?: number
+) => {
   const response = await fetch(process.env.HYGRAPH_URL!, {
     method: "POST",
     headers: {
@@ -8,11 +11,14 @@ export const fetchHygraphQuery = async (query: string) => {
     },
     body: JSON.stringify({ query }),
     next: {
-      revalidate: 60 * 60 * 24, // 24 horas
-    },
+      revalidate
+    }
   });
 
-  const { data } = await response.json();
+  if (!response.ok) {
+    throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+  }
 
+  const { data } = await response.json();
   return data;
 };

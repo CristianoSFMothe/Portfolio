@@ -1,32 +1,19 @@
 "use client"
 
 import { Button } from "@/app/components/button";
+import { CMSIcon } from "@/app/components/cms-icon";
+import { RichText } from "@/app/components/rich-text";
 import { TechBadge } from "@/app/components/tech-badge";
 import { cn } from "@/app/libs/utils";
+import { HomePageInfo } from "@/app/types/page-info";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import {
-  TbBrandGithub,
-  TbBrandLinkedin,
-  TbBrandWhatsapp,
-} from "react-icons/tb";
 
-const MOCK_CONTACTS = [
-  {
-    url: "https://www.linkedin.com/in/cristiano-da-silva-ferreira/",
-    icon: <TbBrandGithub />,
-  },
-  {
-    url: "https://github.com/CristianoSFMothe",
-    icon: <TbBrandLinkedin />,
-  },
-  {
-    url: "https://wa.me/5521983765945",
-    icon: <TbBrandWhatsapp />,
-  },
-];
+type HomeSectionProps = {
+  homeInfo: HomePageInfo
+}
 
-export const HeroSection = () => {
+export const HeroSection = ({ homeInfo }: HomeSectionProps ) => {
   const handleContact = () => {
     const contactSection = document.querySelector("#contact");
 
@@ -47,16 +34,13 @@ export const HeroSection = () => {
           <p className="font-mono text-emerald-400">Olá, meu nome é...</p>
           <h2 className="text-4xl font-medium mt-3">Cristiano Ferreira</h2>
 
-          <p className="text-gray-400 my-6 text-sm sm:text-base">
-            Olá, sou um Quality Assurance, apaixonado por tecnologia, com mais
-            de 2 anos de experiência em testes de software. Com foco em
-            automação, para garantir a qualidade e eficiência das aplicações no
-            qual estou envolvido.
-          </p>
+          <div className="text-gray-400 my-6 text-sm sm:text-base">
+           <RichText content={homeInfo.introduction.raw} />
+          </div>
 
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <TechBadge name="Cypress" />
+            {homeInfo.technologies.map((tech) => (
+              <TechBadge name={tech.name} />
             ))}
           </div>
 
@@ -67,14 +51,15 @@ export const HeroSection = () => {
             </Button>
 
             <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
-              {MOCK_CONTACTS.map((contact, index) => (
+              {homeInfo.socials.map((contact, index) => (
                 <a
                   href={contact.url}
                   key={`contact-${index}`}
                   target="_blank"
                   className="hover:text-gray-100 transition-colors"
                 >
-                  {contact.icon}
+                  <CMSIcon icon={contact.iconSvg} />
+                  
                 </a>
               ))}
             </div>
@@ -84,11 +69,11 @@ export const HeroSection = () => {
         <Image
           width={420}
           height={404}
-          src="/images/profile-pic.png"
+          src={homeInfo.profilePicture.url}
           alt="Foto de Perfil do Cristiano Ferreira"
           className={cn(
             "w-[300px] h-[300px] lg:w-[420px] lg:h-[404px]",
-            "mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover img-profile-home"
+            "mb-6 lg:mb-0 rounded-lg object-cover img-profile-home"
           )}
         />
       </div>
