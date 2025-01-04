@@ -1,10 +1,18 @@
+import { WorkExperiences as IwWrkExperiences } from "@/app/types/work-experiences";
 import { HorizontalDivider } from "../../divider/horizontal";
 import { SectionTitle } from "../../section-title";
 import { ExperiencieItem } from "./experience-item";
 
-export const WorkExperience = () => {
+type WorkExperiencesProps = {
+  experiences: IwWrkExperiences[];
+};
+
+export const WorkExperience = ({ experiences }: WorkExperiencesProps) => {
   return (
-    <section id="experience" className="container py-16 flex gap-10 md:gap-4 lg:gap-16 md:flex-col flex-col">
+    <section
+      id="experience"
+      className="container py-16 flex gap-10 md:gap-4 lg:gap-16 md:flex-col flex-col"
+    >
       <div className="max-w-[420px]">
         <SectionTitle subtitle="experiência" title="Experiência Profissional" />
 
@@ -15,8 +23,12 @@ export const WorkExperience = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <ExperiencieItem />
-        <ExperiencieItem />
+        {experiences?.map((experience) => (
+          <ExperiencieItem 
+          key={`${experience.companyName}-${experience.startDate}`} 
+          experience={experience}
+          />
+        ))}
       </div>
     </section>
   );
