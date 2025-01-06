@@ -18,7 +18,6 @@ export type HomePageInfo = {
   socials: Social[]
   knownTechs: KnownTech[]
   highlightProjects: Project[]
-
 }
 
 export type ProjectPageData = {
@@ -27,6 +26,12 @@ export type ProjectPageData = {
 
 export type ProjectsPageData = {
   projects: Project[]
+}
+
+export type ProjectsPageStaticData = {
+  projects: {
+    slug: string
+  }[]
 }
 
 export type HomePageData = {
