@@ -11,7 +11,7 @@ type HighlightedProjectsProps = {
 
 export const HighlightedProjects = ({ projects }: HighlightedProjectsProps) => {
   return (
-    <section className="container py-16 text-right">
+    <section className="container py-16 text-right" id="projects">
       <SectionTitle subtitle="destaques" title="Projetos em destaque" />
       <HorizontalDivider className="mb-16" />
 

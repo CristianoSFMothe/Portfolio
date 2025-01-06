@@ -1,8 +1,13 @@
 import { cn } from "@/app/libs/utils";
 import { ProjectCard } from "./project-card";
 import Link from "next/link";
+import { Project } from "@/app/types/projects";
 
-export const ProjectList = () => {
+type ProjectListProps = {
+  projects: Project[]
+}
+
+export const ProjectList = ({ projects }: ProjectListProps) => {
   return (
     <section
       className={cn(
@@ -11,9 +16,11 @@ export const ProjectList = () => {
         "gap-x-4 gap-y-6"
       )}
     >
-      <Link href="/projects/projeto-01">
-        <ProjectCard />
-      </Link>
+     {projects.map((project) => (
+       <Link key={project.title} href={`/projects/${project.slug}`}>
+       <ProjectCard project={project} />
+     </Link>
+     ))}
     </section>
   );
 };

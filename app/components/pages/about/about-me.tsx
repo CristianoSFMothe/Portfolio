@@ -6,25 +6,24 @@ import { cn } from "@/app/libs/utils";
 import Image from "next/image";
 import { FaDownload } from "react-icons/fa";
 
-export const AboutMe = () => {
-  const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/cv.pdf";
-    link.download = "curriculo-quality-assurance.pdf";
-    link.click();
-  };
+export const AboutMe = () => { 
+
+  const urlCV = "https://drive.google.com/file/d/1tRMhWRT-M6fsSFRWJOPSBKsY93ZZJq0T/view?usp=sharing"
 
   return (
     <section className="container py-16">
       <SectionTitle subtitle="sobre" title="Um pouco sobre mim" />
 
-      <div id="about" className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start">
+      <div
+        id="about"
+        className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start"
+      >
         <div
           className={cn(
             "w-[320px] h-[320px] lg:w-[440px] lg:h-[440px]",
             "flex items-center justify-center",
             "rounded-full border-2 border-emerald-500 shadow-2xl",
-            "hidden sm:flex"
+            "hidden sm:flex",
           )}
         >
           <Image
@@ -79,13 +78,14 @@ export const AboutMe = () => {
             Software.
           </p>
 
-          <Button
-            className="shadow-button w-max mt-6 md:self-start btn-download-cv"
-            onClick={handleDownloadCV}
-          >
-            Download do CV
-            <FaDownload size={18} />
-          </Button>
+          <a href={urlCV} target="_blank">
+            <Button
+              className="shadow-button w-max mt-6 md:self-start btn-download-cv"
+            >
+              Download do CV
+              <FaDownload size={18} />
+            </Button>
+          </a>
         </div>
       </div>
     </section>

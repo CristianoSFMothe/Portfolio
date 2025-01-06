@@ -1,5 +1,4 @@
 import { WorkExperiences as IwWrkExperiences } from "@/app/types/work-experiences";
-import { HorizontalDivider } from "../../divider/horizontal";
 import { SectionTitle } from "../../section-title";
 import { ExperiencieItem } from "./experience-item";
 
@@ -24,9 +23,9 @@ export const WorkExperience = ({ experiences }: WorkExperiencesProps) => {
 
       <div className="flex flex-col gap-4">
         {experiences?.map((experience) => (
-          <ExperiencieItem 
-          key={`${experience.companyName}-${experience.startDate}`} 
-          experience={experience}
+          <ExperiencieItem
+            key={`${experience.companyName}-${experience.startDate}`}
+            experience={experience}
           />
         ))}
       </div>
