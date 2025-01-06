@@ -1,5 +1,5 @@
 import { ProjectDetails } from "@/app/components/pages/project/project-details";
-import { ProjectSection } from "@/app/components/pages/project/project-section";
+import { ProjectSections } from "@/app/components/pages/project/project-sections";
 import { ProjectPageData } from "@/app/types/page-info";
 import { fetchHygraphQuery } from "@/app/utils/fetch-hygraph-query";
 
@@ -41,7 +41,6 @@ const getProjectDetails = async (slug: string): Promise<ProjectPageData | null> 
   `;
 
   const data = await fetchHygraphQuery(query, 60 * 60 * 24);
-  console.log("Hygraph Response:", data);
 
   return data?.project ? { project: data.project } : null;
 };
@@ -55,12 +54,10 @@ export default async function Project({ params: { slug } }: ProjectProps) {
 
   const { project } = projectData;
 
-  console.log(project);
-
   return (
     <>
       <ProjectDetails project={project} />
-      <ProjectSection />
+      <ProjectSections sections={project.sections} />
     </>
   );
 }

@@ -1,17 +1,10 @@
+import { ProjectSection } from "@/app/types/projects";
 import Image from "next/image";
 
-const sections = [
-  {
-    title: "Login",
-    image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fitqggfjpavkm0g7wor7r.png",
-  },
-  {
-    title: "Home",
-    image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fitqggfjpavkm0g7wor7r.png",
-  },
-];
-
-export const ProjectSection = () => {
+type ProjectSectionsProps = {
+  sections: ProjectSection[]
+}
+export const ProjectSections = ({ sections }: ProjectSectionsProps) => {
   return (
     <section className="container my-12 md:my-32 flex flex-col gap-8 md:gap-32">
       {sections.map((section) => (
@@ -24,7 +17,7 @@ export const ProjectSection = () => {
           </h2>
 
           <Image 
-            src={section.image}
+            src={section.image.url}
             width={1080}
             height={672}
             alt={section.title}
