@@ -2,6 +2,7 @@ import { ProjectDetails } from "@/app/components/pages/project/project-details";
 import { ProjectSections } from "@/app/components/pages/project/project-sections";
 import { ProjectPageData, ProjectsPageStaticData } from "@/app/types/page-info";
 import { fetchHygraphQuery } from "@/app/utils/fetch-hygraph-query";
+import { Metadata } from "next";
 
 type ProjectProps = {
   params: {
@@ -9,9 +10,7 @@ type ProjectProps = {
   };
 };
 
-const getProjectDetails = async (
-  slug: string,
-): Promise<ProjectPageData | null> => {
+const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
   const query = `
   query ProjectQuery {
     project(where: {slug: "${slug}"}) {
@@ -42,25 +41,21 @@ const getProjectDetails = async (
   }
   `;
 
-  // Define o tipo esperado para a resposta da API
   type ProjectQueryResponse = {
-    project: ProjectPageData["project"]; // Reutiliza o tipo definido em ProjectPageData
+    project: ProjectPageData["project"];
   };
 
-  // Chama a função com o tipo esperado
   const data = await fetchHygraphQuery<ProjectQueryResponse>(query, 60 * 60 * 24);
 
-  return data?.project ? { project: data.project } : null;
-};
-
-export default async function Project({ params: { slug } }: ProjectProps) {
-  const projectData = await getProjectDetails(slug);
-
-  if (!projectData) {
+  if (!data.project) {
     throw new Error("Projeto não encontrado.");
   }
 
-  const { project } = projectData;
+  return { project: data.project };
+};
+
+export default async function Project({ params: { slug } }: ProjectProps) {
+  const { project } = await getProjectDetails(slug);
 
   return (
     <>
@@ -79,8 +74,29 @@ export async function generateStaticParams() {
     }
   `;
 
-  // Tipagem para a resposta da query
   const { projects } = await fetchHygraphQuery<ProjectsPageStaticData>(query);
 
-  return projects
+  return projects.map(({ slug }) => ({
+    slug,
+  }));
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: ProjectProps): Promise<Metadata> {
+  const { project } = await getProjectDetails(slug);
+
+  return {
+    title: project.title,
+    description: project.description.text,
+    openGraph: {
+      images: [
+        {
+          url: project.thumbnail.url,
+          width: 1200,
+          height: 630
+        }
+      ]
+    }
+  };
 }
