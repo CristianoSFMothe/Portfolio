@@ -6,8 +6,13 @@ import { cn } from "@/app/libs/utils";
 import Image from "next/image";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { HomePageInfo } from "@/app/types/page-info";
 
-export const AboutMe = () => {
+type HomeSectionProps = {
+  homeInfo: HomePageInfo;
+};
+
+export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
   const urlCV =
     "https://drive.google.com/file/d/1tRMhWRT-M6fsSFRWJOPSBKsY93ZZJq0T/view?usp=sharing";
 
@@ -74,7 +79,7 @@ export const AboutMe = () => {
             <Image
               width={420}
               height={404}
-              src="/images/profile.png"
+              src={homeInfo.profilePicture.url}
               alt="Foto de Perfil do Cristiano Ferreira"
               className="w-[300px] h-[300px] lg:w-[420px] lg:h-[404px] rounded-full object-cover"
             />
