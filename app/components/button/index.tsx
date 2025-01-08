@@ -1,5 +1,7 @@
 import { cn } from "@/app/libs/utils";
 import { ButtonHTMLAttributes } from "react";
+import { motion } from "framer-motion";
+import { ComponentProps } from "react";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
