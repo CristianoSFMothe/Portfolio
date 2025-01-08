@@ -74,7 +74,7 @@ export const AboutMe = () => {
             <Image
               width={420}
               height={404}
-              src="/images/profile-pic.png"
+              src="/images/profile.png"
               alt="Foto de Perfil do Cristiano Ferreira"
               className="w-[300px] h-[300px] lg:w-[420px] lg:h-[404px] rounded-full object-cover"
             />
