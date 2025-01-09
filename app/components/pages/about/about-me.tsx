@@ -16,7 +16,7 @@ export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
   const urlCV =
     "https://drive.google.com/file/d/1tRMhWRT-M6fsSFRWJOPSBKsY93ZZJq0T/view?usp=sharing";
 
-    console.log(homeInfo.profilePicture.url)
+  console.log(homeInfo.profilePicture.url);
 
   const paragraphTexts = [
     <>
@@ -53,13 +53,10 @@ export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
   ];
 
   return (
-    <section className="container py-16">
+    <section className="container py-16" id="about">
       <SectionTitle subtitle="sobre" title="Um pouco sobre mim" />
 
-      <div
-        id="about"
-        className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start"
-      >
+      <div className="flex flex-col md:flex-row gap-16 mt-10 items-center md:items-start">
         <motion.div
           className={cn(
             "w-[320px] h-[320px] lg:w-[440px] lg:h-[440px]",
@@ -97,19 +94,19 @@ export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
               hidden: { opacity: 0 },
               visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
             }}
-            >
+          >
             {paragraphTexts.map((text, index) => (
               <motion.p
-              key={index}
-              className={`text-gray-400 text-sm sm:text-base ${
-                index !== 0 ? "mt-4" : ""
+                key={index}
+                className={`text-gray-400 text-sm sm:text-base ${
+                  index !== 0 ? "mt-4" : ""
                 }`}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.5 }}
-                >
+              >
                 {text}
               </motion.p>
             ))}
@@ -121,7 +118,7 @@ export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             whileTap={{ scale: 0.9 }}
             className="w-max"
-            >
+          >
             <a href={urlCV} target="_blank">
               <Button className="shadow-button w-max mt-6 md:self-start btn-download-cv">
                 Download do CV
@@ -134,4 +131,3 @@ export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
     </section>
   );
 };
-
