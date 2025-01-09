@@ -45,7 +45,10 @@ const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
     project: ProjectPageData["project"];
   };
 
-  const data = await fetchHygraphQuery<ProjectQueryResponse>(query, 60 * 60 * 24);
+  const data = await fetchHygraphQuery<ProjectQueryResponse>(
+    query,
+    60 * 60 * 24,
+  );
 
   if (!data.project) {
     throw new Error("Projeto não encontrado.");
@@ -94,9 +97,21 @@ export async function generateMetadata({
         {
           url: project.thumbnail.url,
           width: 1200,
-          height: 630
-        }
-      ]
-    }
+          height: 630,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: project.thumbnail.url,
+      title: project.title,
+      description: project.description.text,
+      image: project.thumbnail.url,
+      site: "https://portfolio-qa-cristiano.vercel.app/",
+    } as any,
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
