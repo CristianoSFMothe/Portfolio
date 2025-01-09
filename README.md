@@ -3,6 +3,8 @@
 
 Este é um portfólio pessoal desenvolvido para apresentar meus principais projetos e minha experiência profissional. O design foi pensado de forma minimalista, mas com uma visualização detalhada de cada projeto, para que os visitantes possam compreender melhor as tecnologias e as soluções que utilizei em cada um deles. O portfólio também contém uma breve descrição de minha trajetória profissional e as principais habilidades adquiridas ao longo dos anos.
 
+![image](https://github.com/user-attachments/assets/c839ae6a-868d-4e4b-b6f1-ae95134dc6da)
+
 ### 🛠 Tecnologias Utilizadas:
 
 - **Next.js** ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
