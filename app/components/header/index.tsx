@@ -11,14 +11,6 @@ const NAV_ITEMS = [
     href: "/",
   },
   {
-    label: "Sobre",
-    href: "#about",
-  },
-  {
-    label: "Experiência",
-    href: "#work-experience",
-  },
-  {
     label: "Projetos",
     href: "/projects",
   },
