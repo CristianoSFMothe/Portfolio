@@ -14,35 +14,40 @@ type HomeSectionProps = {
 
 export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
   const urlCV =
-    "https://drive.google.com/file/d/1tRMhWRT-M6fsSFRWJOPSBKsY93ZZJq0T/view?usp=sharing";
+    "https://drive.google.com/file/d/1rYNMfrfOwnhjLIxb68kl2zaqrrZaW5kX/view?usp=sharing";
 
   console.log(homeInfo.profilePicture.url);
 
   const paragraphTexts = [
     <>
-      Prazer, eu sou...{" "}
+      Prazer, eu sou{" "}
       <span className="text-emerald-500 text-lg sm:text-base font-normal sm:font-bold">
         Cristiano Ferreira
       </span>{" "}
-      um Quality Assurance, graduado em{" "}
-      <span className="text-emerald-500 text-lg">Sistema de Informações</span>,
-      pela a Universidade Estácio de Sá.
+      um profissional de{" "}
+      <span className="text-emerald-500">Quality Assurance</span>, com graduação
+      em <span className="text-emerald-500">Sistema de Informação</span>, pela a
+      Universidade Estácio de Sá.
     </>,
     <>
-      Apaixonado por tecnologia, possuo mais de{" "}
+      Com mais de{" "}
       <span className="text-emerald-500 text-lg">2 anos de experiência</span> em
-      testes de software, atuando tanto em testes manuais quanto em automação,
-      sempre com o objetivo de assegurar qualidade e eficiência nas operações.
+      testes de software, tenho atuado tanto em testes manuais quanto em
+      automação de testes, utilizando ferramentas e tecnologias avançadas para
+      garantir a qualidade e eficiência dos sistemas. Minha expertise em
+      automação se destaca pelo uso de soluções como
     </>,
     <>
-      Tenho especial interesse e dedicação à automação de testes, utilizando
-      diversas tecnologias e ferramentas para elevar a performance e a
-      confiabilidade do software.
+      <span className="text-emerald-500 text-lg">Cypress</span>,
+      <span className="text-emerald-500 text-lg">Robot Framework</span>,
+      <span className="text-emerald-500 text-lg">JMeter</span>,
+      <span className="text-emerald-500 text-lg">Postman</span>, sempre com foco
+      na performance e confiabilidade do software.
     </>,
     <>
       Além disso, sou experiente em{" "}
       <span className="text-emerald-500 font-medium">
-        Metodologia Ágil (Scrum e Kanban)
+        Metodologia Ágil (como Scrum e Kanban)
       </span>
       , contribuindo para maior agilidade e organização no desenvolvimento.
     </>,
