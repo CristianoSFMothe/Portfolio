@@ -6,17 +6,10 @@ import { cn } from "@/app/libs/utils";
 import Image from "next/image";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { HomePageInfo } from "@/app/types/page-info";
 
-type HomeSectionProps = {
-  homeInfo: HomePageInfo;
-};
-
-export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
+export const AboutMe = () => {
   const urlCV =
     "https://drive.google.com/file/d/1rYNMfrfOwnhjLIxb68kl2zaqrrZaW5kX/view?usp=sharing";
-
-  console.log(homeInfo.profilePicture.url);
 
   const paragraphTexts = [
     <>
