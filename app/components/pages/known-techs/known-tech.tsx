@@ -1,17 +1,14 @@
 import { cn } from "@/app/libs/utils";
 import { KnownTech as IKnownTech } from "@/app/types/projects";
-import { getRelativeTimeString } from "@/app/utils/get-relative-time";
 import { CMSIcon } from "../../cms-icon";
+import { getExactExperience } from "@/app/utils/get-relative-time";
 
 type KnownTechProps = {
-  tech: IKnownTech
+  tech: IKnownTech;
 };
 
 export const KnowTech = ({ tech }: KnownTechProps) => {
-  const relativeTime = getRelativeTimeString(
-    new Date(tech.startDate),
-    "pt-BR"
-  ).replace("há ", "");
+  const experience = getExactExperience(new Date(tech.startDate), "pt-BR");
 
   return (
     <div
@@ -21,11 +18,11 @@ export const KnowTech = ({ tech }: KnownTechProps) => {
       )}
     >
       <div className="flex items-center justify-between">
-        <p className={`font-medium ${tech.name}`}>{tech.name}</p>
+        <p className="font-medium truncate">{tech.name}</p>
         <CMSIcon icon={tech.iconSvg} />
       </div>
 
-      <span>{relativeTime} de experiência</span>
+      <span className="truncate">{experience} de experiência</span>
     </div>
   );
 };

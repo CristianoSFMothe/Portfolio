@@ -1,50 +1,26 @@
-/**
- * Convert a date to a relative time string, such as
- * "a minute ago", "in 2 hours", "yesterday", "3 months ago", etc.
- * using Intl.RelativeTimeFormat
- */
-export function getRelativeTimeString(
-  date: Date | number,
-  lang = navigator.language,
+export function getExactExperience(
+  startDate: Date | number,
+  lang = navigator.language
 ): string {
-  // Allow dates or times to be passed
-  const timeMs = typeof date === 'number' ? date : date.getTime()
+  const start = new Date(startDate);
+  const now = new Date();
 
-  // Get the amount of seconds between the given date and now
-  const deltaSeconds = Math.round((timeMs - Date.now()) / 1000)
+  // Cálculo dos anos
+  let years = now.getFullYear() - start.getFullYear();
 
-  // Array reprsenting one minute, hour, day, week, month, etc in seconds
-  const cutoffs = [
-    60,
-    3600,
-    86400,
-    86400 * 7,
-    86400 * 30,
-    86400 * 365,
-    Infinity,
-  ]
+  // Cálculo dos meses
+  let months = now.getMonth() - start.getMonth();
 
-  // Array equivalent to the above but in the string representation of the units
-  const units: Intl.RelativeTimeFormatUnit[] = [
-    'second',
-    'minute',
-    'hour',
-    'day',
-    'week',
-    'month',
-    'year',
-  ]
+  // Ajustar os valores se o mês atual for anterior ao mês de início
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
 
-  // Grab the ideal cutoff unit
-  const unitIndex = cutoffs.findIndex(
-    (cutoff) => cutoff > Math.abs(deltaSeconds),
-  )
+  // Formatar o resultado
+  const yearText = years > 0 ? `${years} ${years === 1 ? 'ano' : 'anos'}` : '';
+  const monthText = months > 0 ? `${months} ${months === 1 ? 'mês' : 'meses'}` : '';
 
-  // Get the divisor to divide from the seconds. E.g. if our unit is "day" our divisor
-  // is one day in seconds, so we can divide our seconds by this to get the # of days
-  const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1
-
-  // Intl.RelativeTimeFormat do its magic
-  const rtf = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' })
-  return rtf.format(Math.floor(deltaSeconds / divisor), units[unitIndex])
+  // Combinar anos e meses
+  return [yearText, monthText].filter(Boolean).join(' e ');
 }
