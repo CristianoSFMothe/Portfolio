@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export const AboutMe = () => {
   const urlCV =
-    "https://drive.google.com/file/d/1rYNMfrfOwnhjLIxb68kl2zaqrrZaW5kX/view?usp=sharing";
+    "https://drive.google.com/file/d/1Nm8CARSZTBgly46lK-Wx8UCM0U-draUe/view?usp=sharing";
 
   const paragraphTexts = [
     <>
