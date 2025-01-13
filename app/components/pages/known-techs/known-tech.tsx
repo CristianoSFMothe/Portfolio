@@ -23,6 +23,7 @@ export const KnowTech = ({ tech }: KnownTechProps) => {
       </div>
 
       {/* <span className="truncate">{experience} de experiência</span> */}
+      
     </div>
   );
 };
