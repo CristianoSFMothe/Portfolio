@@ -22,7 +22,7 @@ export const KnowTech = ({ tech }: KnownTechProps) => {
         <CMSIcon icon={tech.iconSvg} />
       </div>
 
-      <span className="truncate">{experience} de experiência</span>
+      {/* <span className="truncate">{experience} de experiência</span> */}
     </div>
   );
 };
