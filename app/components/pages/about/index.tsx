@@ -6,8 +6,17 @@ import { cn } from "@/app/libs/utils";
 import Image from "next/image";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { HomePageInfo } from "@/app/types/page-info";
 
-export const AboutMe = () => {
+type HomeSectionProps = {
+  homeInfo: HomePageInfo;
+};
+
+export const AboutMe = ({ homeInfo }: HomeSectionProps) => {
+
+  // console.log("Home Info ",homeInfo)
+  console.log("Home Info About URL Curriculum",homeInfo.profileAbout.url)
+
   const urlCV =
     "https://drive.google.com/file/d/1Nm8CARSZTBgly46lK-Wx8UCM0U-draUe/view?usp=sharing";
 
