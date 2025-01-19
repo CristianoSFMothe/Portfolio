@@ -39,6 +39,13 @@ const getPageData = async (): Promise<HomePageData> => {
           name
         }
       }
+      profileAbout {
+        url
+      }
+      urlCurriculum
+      aboutMe {
+        raw
+      }
     }
     workExperiences {
       companyLogo {

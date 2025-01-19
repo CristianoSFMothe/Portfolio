@@ -22,6 +22,9 @@ export type HomePageInfo = {
     url: string
   }
   urlCurriculum: string
+  aboutMe: {
+    raw: RichTextContent
+  }
 }
 
 export type ProjectPageData = {
