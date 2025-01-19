@@ -18,6 +18,13 @@ export type HomePageInfo = {
   socials: Social[]
   knownTechs: KnownTech[]
   highlightProjects: Project[]
+  profileAbout: {
+    url: string
+  }
+  urlCurriculum: string
+  aboutMe: {
+    raw: RichTextContent
+  }
 }
 
 export type ProjectPageData = {
@@ -37,4 +44,11 @@ export type ProjectsPageStaticData = {
 export type HomePageData = {
   page: HomePageInfo
   workExperiences: WorkExperiences[]
+}
+
+export type AboutPageData = {
+  profileAbout: {
+    url: string
+  }
+  urlCurriculum: string
 }
