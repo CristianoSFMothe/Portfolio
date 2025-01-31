@@ -40,7 +40,41 @@ export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
           transition={{ duration: 0.5 }}
         >
           <p className="font-mono text-emerald-400">Prazer, eu sou...</p>
-          <h2 className="text-4xl font-medium mt-3">Cristiano Ferreira</h2>
+
+          <motion.h2
+            className="text-4xl font-medium mt-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.span
+              className="inline-block"
+              initial={{ width: 0 }}
+              animate={{
+                width: "auto",
+              }}
+              transition={{
+                duration: 3,
+                ease: "linear",
+              }}
+              style={{ whiteSpace: "nowrap", overflow: "hidden" }}
+            >
+              Cristiano Ferreira
+            </motion.span>
+            <motion.span
+              className="inline-block w-1 bg-white ml-1"
+              animate={{
+                opacity: [1, 0],
+              }}
+              transition={{
+                duration: 0.5,
+                repeat: Infinity,
+                ease: "ease",
+              }}
+            >
+              &nbsp;
+            </motion.span>
+          </motion.h2>
 
           <div className="text-gray-400 my-6 text-sm sm:text-base">
             <RichText content={homeInfo.introduction.raw} />
