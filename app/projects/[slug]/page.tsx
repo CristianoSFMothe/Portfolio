@@ -47,7 +47,7 @@ const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
 
   const data = await fetchHygraphQuery<ProjectQueryResponse>(
     query,
-    60 * 60 * 24,
+    60 * 60 * 1,
   );
 
   if (!data.project) {
