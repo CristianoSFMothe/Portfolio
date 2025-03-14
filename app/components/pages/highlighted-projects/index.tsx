@@ -10,7 +10,7 @@ type HighlightedProjectsProps = {
 };
 
 export const HighlightedProjects = ({ projects }: HighlightedProjectsProps) => {
-  console.log(projects);
+  // console.log(projects);
 
   return (
     <section className="container py-16 text-right">
