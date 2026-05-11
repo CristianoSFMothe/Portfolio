@@ -1,26 +1,66 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Personal portfolio built to showcase my professional profile, technical skills, QA experience, software testing background, and development projects.",
+  "keywords": [
+    "portfolio",
+    "developer-portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "shadcn-ui",
+    "frontend",
+    "qa",
+    "quality-assurance",
+    "software-testing",
+    "test-automation",
+    "dev",
+    "software-engineer"
+  ],
+  "author": {
+    "name": "Cristiano S. F. Mothe",
+    "url": "https://github.com/CristianoSFMothe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristianoSFMothe/Portfolio.git"
+  },
+  "packageManager": "pnpm@11.0.9",
+  "engines": {
+    "node": ">=24.12.0 <25",
+    "pnpm": ">=11.0.9"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "commitlint": "commitlint",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "next": "16.0.2",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.2"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "16.0.2"
+    "eslint-config-next": "16.0.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
