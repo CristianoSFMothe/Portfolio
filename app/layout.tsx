@@ -3,6 +3,8 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
+import Navbar from './_components/Navbar'
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -92,6 +94,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} bg-background font-inter text-foreground min-h-screen antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
