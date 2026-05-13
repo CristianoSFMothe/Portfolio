@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Box,
   Cloud,
@@ -7,11 +9,75 @@ import {
   Layers,
   Terminal,
 } from 'lucide-react'
+import * as React from 'react'
+
+import {
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/app/_components/ui/carousel'
+
+import TechnologyCard from './TechnologyCard'
+
+const AUTOPLAY_DELAY = 4000
+
+const technologies = [
+  {
+    icon: <Code2 size={36} className='text-primary' />,
+    label: 'JS / TS',
+  },
+  {
+    icon: <Layers size={36} className='text-secondary' />,
+    label: 'React / Next.js',
+  },
+  {
+    icon: <Terminal size={36} className='text-tertiary' />,
+    label: 'Node.js / Express',
+  },
+  {
+    icon: <Database size={36} className='text-primary' />,
+    label: 'PostgreSQL / MongoDB',
+  },
+  {
+    icon: <Cloud size={36} className='text-secondary' />,
+    label: 'AWS / Azure',
+  },
+  {
+    icon: <Box size={36} className='text-tertiary' />,
+    label: 'Docker / Kubernetes',
+  },
+  {
+    icon: <GitMerge size={36} className='text-primary' />,
+    label: 'CI/CD / Git',
+  },
+  {
+    icon: <Layers size={36} className='text-secondary' />,
+    label: 'Microsserviços',
+  },
+]
 
 const Technologies = () => {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [isPaused, setIsPaused] = React.useState(false)
+
+  React.useEffect(() => {
+    if (!api || isPaused) return
+
+    const intervalId = window.setInterval(() => {
+      api.scrollNext()
+    }, AUTOPLAY_DELAY)
+
+    return () => {
+      window.clearInterval(intervalId)
+    }
+  }, [api, isPaused])
+
   return (
     <section
-      className='relative mx-auto max-w-7xl border-t border-white/5 px-6 py-24 lg:px-20'
+      className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='technologies'
     >
       <div className='mb-12'>
@@ -20,87 +86,30 @@ const Technologies = () => {
           Principais Tecnologias
         </h2>
       </div>
-      <div className='space-y-12'>
-        <div className='space-y-6'>
-          <h3 className='font-jakarta text-primary text-xl font-semibold'>
-            Linguagens & Frameworks
-          </h3>
-          <div className='grid grid-cols-2 gap-6 md:grid-cols-4'>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Code2 size={36} className='text-primary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                JS / TS
-              </span>
-            </div>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Layers size={36} className='text-secondary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                React / Next.js
-              </span>
-            </div>
-          </div>
-        </div>
 
-        <div className='space-y-6'>
-          <h3 className='font-jakarta text-secondary text-xl font-semibold'>
-            Backend & Bancos de Dados
-          </h3>
-          <div className='grid grid-cols-2 gap-6 md:grid-cols-4'>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Terminal size={36} className='text-tertiary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                Node.js / Express
-              </span>
-            </div>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Database size={36} className='text-primary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                PostgreSQL / MongoDB
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className='space-y-6'>
-          <h3 className='font-jakarta text-tertiary text-xl font-semibold'>
-            Infraestrutura & Cloud
-          </h3>
-          <div className='grid grid-cols-2 gap-6 md:grid-cols-4'>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Cloud size={36} className='text-secondary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                AWS / Azure
-              </span>
-            </div>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Box size={36} className='text-tertiary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                Docker / Kubernetes
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className='space-y-6'>
-          <h3 className='font-jakarta text-primary text-xl font-semibold'>
-            Ferramentas & Metodologias
-          </h3>
-          <div className='grid grid-cols-2 gap-6 md:grid-cols-4'>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <GitMerge size={36} className='text-primary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                CI/CD / Git
-              </span>
-            </div>
-            <div className='glass-panel glass-card-hover flex flex-col items-center justify-center gap-3 p-6'>
-              <Layers size={36} className='text-secondary' />
-              <span className='font-jetbrains text-on-surface text-sm'>
-                Microserviços
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Carousel
+        aria-label='Tecnologias'
+        className='mx-auto w-full'
+        onBlurCapture={() => setIsPaused(false)}
+        onFocusCapture={() => setIsPaused(true)}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        opts={{ align: 'start', loop: true }}
+        setApi={setApi}
+      >
+        <CarouselContent>
+          {technologies.map((technology) => (
+            <CarouselItem
+              key={technology.label}
+              className='basis-full sm:basis-1/2 lg:basis-1/4'
+            >
+              <TechnologyCard icon={technology.icon} label={technology.label} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className='bg-surface/80 text-on-surface hover:bg-surface -left-4 hidden border-white/10 md:flex lg:-left-5' />
+        <CarouselNext className='bg-surface/80 text-on-surface hover:bg-surface -right-4 hidden border-white/10 md:flex lg:-right-5' />
+      </Carousel>
     </section>
   )
 }

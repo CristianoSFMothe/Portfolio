@@ -11,14 +11,14 @@ import FloatingBadge from './FloatingBadge'
 const Hero = () => {
   return (
     <main
-      className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-20'
+      className='mx-auto max-w-368 px-6 sm:px-6 lg:px-10 xl:px-12'
       data-qa='hero-main'
     >
       <section
         aria-describedby='hero-description'
         aria-labelledby='hero-title'
         className={cn(
-          'relative flex min-h-[calc(100svh-5rem)] flex-col overflow-x-clip',
+          'relative flex min-h-[calc(100svh-5rem)] flex-col overflow-x-clip lg:overflow-visible',
           'items-center justify-center gap-12 py-16 sm:gap-14 sm:py-20',
           'lg:min-h-217.5 lg:flex-row lg:justify-between lg:gap-16 lg:py-24',
         )}
@@ -122,7 +122,7 @@ const Hero = () => {
 
         <figure
           aria-labelledby='hero-visual-caption'
-          className='relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end'
+          className='relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-10 xl:pr-16'
           data-qa='hero-visual'
         >
           <figcaption className='sr-only' id='hero-visual-caption'>

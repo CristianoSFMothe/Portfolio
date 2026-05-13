@@ -59,8 +59,8 @@ const Navbar = () => {
       <div
         className={cn(
           'relative mx-auto flex h-14 w-full',
-          'max-w-7xl items-center justify-end gap-3 px-4',
-          'min-[1120px]:justify-between min-[1120px]:px-6 sm:h-16 sm:px-6 lg:px-8',
+          'max-w-368 items-center justify-end gap-3 px-4 sm:px-6',
+          'min-[1120px]:justify-between min-[1120px]:px-6 sm:h-16 lg:px-10 xl:px-12',
         )}
       >
         <Link
