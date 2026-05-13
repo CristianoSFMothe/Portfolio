@@ -137,6 +137,7 @@
   --chart-3: #dbb8ff;
   --chart-4: #0070f3;
   --chart-5: #994eea;
+  --shadow-primary-rgb: 0, 112, 243;
 
   --sidebar: #151c25;
   --sidebar-foreground: #dce3f0;
@@ -226,6 +227,7 @@
   --chart-3: #dbb8ff;
   --chart-4: #0070f3;
   --chart-5: #994eea;
+  --shadow-primary-rgb: 0, 112, 243;
 
   --sidebar: #151c25;
   --sidebar-foreground: #dce3f0;
@@ -253,11 +255,11 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-surface/10 rounded-xl border border-white/10 shadow-[0_4px_30px_rgba(0,112,243,0.05)] backdrop-blur-xl;
+    @apply bg-surface/10 rounded-xl border border-white/10 shadow-[0_4px_30px_rgba(var(--shadow-primary-rgb),0.05)] backdrop-blur-xl;
   }
 
   .glass-card-hover {
-    @apply hover:border-primary-container/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,112,243,0.15)];
+    @apply hover:border-primary-container/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(var(--shadow-primary-rgb),0.15)];
   }
 
   .neon-text-glow {

@@ -53,10 +53,16 @@ const Navbar = () => {
     <nav
       className={cn(
         'bg-surface/40 sticky top-0 z-50 w-full border-b border-white/10 backdrop-blur-xl',
-        'relative shadow-[0_0_15px_rgba(0,112,243,0.1)]',
+        'relative shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.1)]',
       )}
     >
-      <div className='relative mx-auto flex h-14 w-full max-w-7xl items-center justify-end gap-3 px-4 min-[1120px]:justify-between min-[1120px]:px-6 sm:h-16 sm:px-6 lg:px-8'>
+      <div
+        className={cn(
+          'relative mx-auto flex h-14 w-full',
+          'max-w-7xl items-center justify-end gap-3 px-4',
+          'min-[1120px]:justify-between min-[1120px]:px-6 sm:h-16 sm:px-6 lg:px-8',
+        )}
+      >
         <Link
           href='/'
           className='absolute left-1/2 flex shrink-0 -translate-x-1/2 items-center min-[1120px]:static min-[1120px]:translate-x-0'
@@ -97,9 +103,11 @@ const Navbar = () => {
 
           <Button
             className={cn(
-              'from-primary-container to-secondary-container rounded-lg border border-white/20 bg-linear-to-r',
-              'font-jetbrains hidden px-4 text-[11px] font-bold text-white shadow-[0_8px_20px_rgba(0,112,243,0.18)] sm:inline-flex',
-              'transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,112,243,0.4)] min-[1120px]:h-9 min-[1120px]:px-5 min-[1120px]:text-xs',
+              'from-primary-container to-secondary-container rounded-lg',
+              'font-jetbrains hidden border border-white/20 bg-linear-to-r px-4',
+              'text-[11px] font-bold text-white shadow-[0_8px_20px_rgba(var(--shadow-primary-rgb),0.18)] sm:inline-flex',
+              'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
+              'min-[1120px]:h-9 min-[1120px]:px-5 min-[1120px]:text-xs',
             )}
           >
             Baixar CV
@@ -161,9 +169,10 @@ const Navbar = () => {
                 <SheetClose asChild>
                   <Button
                     className={cn(
-                      'from-primary-container to-secondary-container mt-auto w-full rounded-xl border border-white/20 bg-linear-to-r',
+                      'from-primary-container to-secondary-container mt-auto',
+                      'w-full rounded-xl border border-white/20 bg-linear-to-r',
                       'font-jetbrains px-6 py-3 text-sm font-bold text-white',
-                      'transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,112,243,0.4)]',
+                      'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
                     )}
                   >
                     Baixar CV
