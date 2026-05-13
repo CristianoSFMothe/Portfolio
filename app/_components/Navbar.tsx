@@ -20,8 +20,8 @@ import {
 
 const navItems = [
   { href: '/', label: 'Início' },
-  { href: '/about', label: 'Sobre' },
-  { href: '/technologies', label: 'Tecnologias' },
+  { href: '#about', label: 'Sobre' },
+  { href: '#technologies', label: 'Tecnologias' },
   { href: '/projects', label: 'Projetos' },
   { href: '/blog', label: 'Blog' },
   { href: '/experience', label: 'Experiência' },

@@ -2,10 +2,11 @@ import { ArrowRight, Cloud, Code2, Database } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { cn } from '../_lib/utils'
+import { cn } from '@/app/_lib/utils'
+
+import { Badge } from '../ui/badge'
 import BackgroundGlow from './BackgroundGlow'
 import FloatingBadge from './FloatingBadge'
-import { Badge } from './ui/badge'
 
 const Hero = () => {
   return (
@@ -22,19 +23,28 @@ const Hero = () => {
           'lg:min-h-217.5 lg:flex-row lg:justify-between lg:gap-16 lg:py-24',
         )}
         data-qa='hero-section'
-        id='inicio'
+        id='home'
       >
         <BackgroundGlow
-          className='bg-primary-container/10 top-8 -left-12 h-64 w-64 blur-[80px] sm:top-12 sm:left-0 sm:h-80 sm:w-80 sm:blur-[90px] lg:top-20 lg:h-96 lg:w-96 lg:blur-[100px]'
+          className={cn(
+            'bg-primary-container/10 top-8 -left-12 h-64 w-64 blur-[80px] sm:top-12',
+            'sm:left-0 sm:h-80 sm:w-80 sm:blur-[90px] lg:top-20 lg:h-96 lg:w-96 lg:blur-[100px]',
+          )}
           data-qa='hero-glow-primary'
         />
         <BackgroundGlow
-          className='bg-tertiary-container/10 -right-10 bottom-8 h-56 w-56 blur-[90px] sm:right-8 sm:bottom-6 sm:h-72 sm:w-72 sm:blur-[100px] lg:right-20 lg:bottom-0 lg:h-80 lg:w-80 lg:blur-[120px]'
+          className={cn(
+            'bg-tertiary-container/10 -right-10 bottom-8 h-56 w-56 blur-[90px] sm:right-8 sm:bottom-6',
+            'sm:h-72 sm:w-72 sm:blur-[100px] lg:right-20 lg:bottom-0 lg:h-80 lg:w-80 lg:blur-[120px]',
+          )}
           data-qa='hero-glow-tertiary'
         />
 
         <header
-          className='z-10 flex w-full max-w-2xl flex-1 flex-col items-center space-y-6 text-center sm:space-y-8 lg:max-w-3xl lg:items-start lg:pr-8 lg:text-left'
+          className={cn(
+            'z-10 flex w-full max-w-2xl flex-1 flex-col items-center space-y-6',
+            'text-center sm:space-y-8 lg:max-w-3xl lg:items-start lg:pr-8 lg:text-left',
+          )}
           data-qa='hero-content'
         >
           <Badge
@@ -53,7 +63,10 @@ const Hero = () => {
           </Badge>
 
           <h1
-            className='font-jakarta text-on-surface max-w-[12ch] text-4xl leading-tight font-extrabold tracking-tight sm:max-w-[14ch] sm:text-5xl xl:text-6xl'
+            className={cn(
+              'font-jakarta text-on-surface max-w-[12ch] text-4xl leading-tight',
+              'font-extrabold tracking-tight sm:max-w-[14ch] sm:text-5xl xl:text-6xl',
+            )}
             data-qa='hero-title'
             id='hero-title'
           >
@@ -117,7 +130,7 @@ const Hero = () => {
             e Cloud & DevOps.
           </figcaption>
           <div
-            className='relative h-[20rem] w-full max-w-xs sm:h-[24rem] sm:max-w-sm md:h-[28rem] md:max-w-md lg:h-125 lg:w-100 lg:max-w-none'
+            className='relative h-80 w-full max-w-xs sm:h-96 sm:max-w-sm md:h-112 md:max-w-md lg:h-125 lg:w-100 lg:max-w-none'
             data-qa='hero-visual-frame'
           >
             <div
