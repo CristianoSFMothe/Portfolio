@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <section
-      className='relative mx-auto max-w-7xl border-t border-white/5 px-6 py-24 lg:px-20'
+      className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='about'
     >
       <div className='mb-12'>
