@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import * as React from 'react'
 
+import CodeBadge from '@/app/_components/CodeBadge'
 import {
   Carousel,
   type CarouselApi,
@@ -81,7 +82,7 @@ const Technologies = () => {
       id='technologies'
     >
       <div className='mb-12'>
-        <div className='code-badge'>&lt;tech-stack /&gt;</div>
+        <CodeBadge label='tech-stack' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Principais Tecnologias
         </h2>

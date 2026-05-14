@@ -1,3 +1,5 @@
+import CodeBadge from '@/app/_components/CodeBadge'
+
 const About = () => {
   return (
     <section
@@ -5,7 +7,7 @@ const About = () => {
       id='about'
     >
       <div className='mb-12'>
-        <div className='code-badge'>&lt;about-me /&gt;</div>
+        <CodeBadge label='about-me' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Perfil Profissional
         </h2>
