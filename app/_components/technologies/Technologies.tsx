@@ -98,7 +98,7 @@ const Technologies = () => {
         opts={{ align: 'start', loop: true }}
         setApi={setApi}
       >
-        <CarouselContent>
+        <CarouselContent className='py-3'>
           {technologies.map((technology) => (
             <CarouselItem
               key={technology.label}
