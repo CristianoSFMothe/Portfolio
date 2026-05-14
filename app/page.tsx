@@ -1,4 +1,5 @@
 import About from './_components/about/About'
+import Academic from './_components/academic/Academic'
 import Hero from './_components/hero/Hero'
 import Technologies from './_components/technologies/Technologies'
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <About />
       <Technologies />
+      <Academic />
     </main>
   )
 }

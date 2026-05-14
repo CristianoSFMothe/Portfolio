@@ -22,6 +22,7 @@ const navItems = [
   { href: '/', label: 'Início' },
   { href: '#about', label: 'Sobre' },
   { href: '#technologies', label: 'Tecnologias' },
+  { href: '#academic', label: 'Formação Acadêmica' },
   { href: '/projects', label: 'Projetos' },
   { href: '/blog', label: 'Blog' },
   { href: '/experience', label: 'Experiência' },
