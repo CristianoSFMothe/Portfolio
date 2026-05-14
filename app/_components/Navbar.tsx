@@ -25,7 +25,7 @@ const navItems = [
   { href: '#academic', label: 'Formação Acadêmica' },
   { href: '#projects', label: 'Projetos' },
   { href: '/blog', label: 'Blog' },
-  { href: '/experience', label: 'Experiência' },
+  { href: '#experience', label: 'Experiência' },
   { href: '/contact', label: 'Contato' },
 ]
 
