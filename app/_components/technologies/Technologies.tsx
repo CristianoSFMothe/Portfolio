@@ -21,7 +21,7 @@ import {
   CarouselPrevious,
 } from '@/app/_components/ui/carousel'
 
-import TechnologyCard from './TechnologyCard'
+import TechnologyCard from './_component/TechnologyCard'
 
 const AUTOPLAY_DELAY = 4000
 

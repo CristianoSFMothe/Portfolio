@@ -8,10 +8,14 @@ import {
 } from '@/app/_components/ui/card'
 import { cn } from '@/app/_lib/utils'
 
-import type { ExperienceItem } from '../_types/experience-item'
 import ExperienceSkillBadge from './ExperienceSkillBadge'
 
-export type ExperienceTimelineItemProps = ExperienceItem & {
+export type ExperienceTimelineItemProps = {
+  company: string
+  role: string
+  period: string
+  responsibilities: string[]
+  skills: string[]
   className?: string
 }
 
