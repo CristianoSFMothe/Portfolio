@@ -4,7 +4,9 @@ import Link from 'next/link'
 
 import { cn } from '@/app/_lib/utils'
 
+import BlurReveal from '../BlurReveal'
 import { Badge } from '../ui/badge'
+import { Button } from '../ui/button'
 import BackgroundGlow from './BackgroundGlow'
 import FloatingBadge from './FloatingBadge'
 
@@ -45,7 +47,6 @@ const Hero = () => {
             'z-10 flex w-full max-w-2xl flex-1 flex-col items-center space-y-6',
             'text-center sm:space-y-8 lg:max-w-3xl lg:items-start lg:pr-8 lg:text-left',
           )}
-          data-reveal='left'
           data-qa='hero-content'
         >
           <Badge
@@ -54,6 +55,7 @@ const Hero = () => {
               'border-primary/30 bg-primary/5 font-jetbrains text-primary',
               'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm',
             )}
+            data-reveal='up'
             data-qa='hero-status-badge'
           >
             <span
@@ -63,23 +65,31 @@ const Hero = () => {
             Open to work
           </Badge>
 
-          <h1
+          <BlurReveal
+            as='h1'
+            blur='12px'
             className={cn(
               'font-jakarta text-on-surface max-w-[12ch] text-4xl leading-tight',
               'font-extrabold tracking-tight sm:max-w-[14ch] sm:text-5xl xl:text-6xl',
             )}
+            delay={0.04}
             data-qa='hero-title'
+            duration={1.15}
             id='hero-title'
+            once={false}
+            yOffset={12}
           >
             Engenheiro de Software focado em construir{' '}
             <span className='from-primary to-secondary neon-text-glow bg-linear-to-r bg-clip-text text-transparent'>
               soluções robustas
             </span>{' '}
             e escaláveis
-          </h1>
+          </BlurReveal>
 
           <p
             className='font-inter text-on-surface-variant max-w-xl text-base sm:text-lg'
+            data-reveal='up'
+            data-reveal-delay='120'
             data-qa='hero-description'
             id='hero-description'
           >
@@ -91,22 +101,35 @@ const Hero = () => {
           <div
             aria-label='Acoes principais'
             className='flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 sm:pt-4 lg:justify-start'
+            data-reveal='up'
+            data-reveal-delay='180'
             data-qa='hero-actions'
             role='group'
           >
-            <Link
+            <Button
               aria-label='Ver projetos'
               className={cn(
-                'from-primary-container to-inverse-primary font-jetbrains w-full justify-center px-8 py-3 text-sm sm:w-auto',
-                'flex items-center gap-2 rounded-lg border border-white/20 bg-linear-to-r font-bold',
-                'text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--shadow-primary-rgb),0.4)]',
+                'from-primary-container to-inverse-primary font-jetbrains group relative h-auto w-full overflow-hidden rounded-full border border-white/20 bg-linear-to-r px-6 py-3 text-sm font-bold text-white shadow-[0_8px_20px_rgba(var(--shadow-primary-rgb),0.18)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--shadow-primary-rgb),0.4)] sm:w-auto',
+                'min-w-52',
               )}
               data-qa='hero-projects-link'
-              href='#projetos'
+              type='button'
             >
-              Ver projetos
-              <ArrowRight aria-hidden='true' size={20} />
-            </Link>
+              <span
+                aria-hidden='true'
+                className='flex items-center gap-2 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0'
+              >
+                <span className='bg-secondary size-2 rounded-lg transition-all duration-300 group-hover:scale-[100.8]' />
+                <span className='whitespace-nowrap'>Ver projetos</span>
+              </span>
+              <span
+                aria-hidden='true'
+                className='absolute inset-0 flex translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100'
+              >
+                <span className='whitespace-nowrap'>Ver projetos</span>
+                <ArrowRight size={20} />
+              </span>
+            </Button>
             <Link
               aria-label='Entrar em contato'
               className={cn(

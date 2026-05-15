@@ -13,7 +13,7 @@ const Experience = () => {
     >
       <div className='pointer-events-none absolute inset-0'>
         <FlickeringGrid
-          className='[mask-image:radial-gradient(circle_at_center,white,transparent_80%)] opacity-50'
+          className='mask-[radial-gradient(circle_at_center,white,transparent_80%)] opacity-50'
           squareSize={4}
           gridGap={8}
           flickerChance={0.12}

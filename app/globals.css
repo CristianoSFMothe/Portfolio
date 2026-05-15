@@ -254,6 +254,26 @@
 }
 
 @layer utilities {
+  @keyframes glow-border-position {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-glow-border {
+    animation-name: glow-border-position;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
   .glass-panel {
     @apply bg-surface/10 rounded-xl border border-white/10 shadow-[0_4px_30px_rgba(var(--shadow-primary-rgb),0.05)] backdrop-blur-xl;
   }
