@@ -9,11 +9,17 @@ import {
 } from '@/app/_components/ui/card'
 import { cn } from '@/app/_lib/utils'
 
-import type { FeaturedProject } from '../_types/featured-project'
 import ProjectLink from './ProjectLink'
 import ProjectTechnologyBadge from './ProjectTechnologyBadge'
 
-export type ProjectCardProps = FeaturedProject & {
+export type ProjectCardProps = {
+  title: string
+  description: string
+  imageSrc: string
+  imageAlt: string
+  technologies: string[]
+  href: string
+  linkLabel?: string
   className?: string
   referrerPolicy?: ComponentProps<typeof Image>['referrerPolicy']
 }
