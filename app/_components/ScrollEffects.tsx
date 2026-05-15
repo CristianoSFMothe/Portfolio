@@ -1,52 +1,12 @@
 'use client'
 
-import Lenis from 'lenis'
 import { usePathname } from 'next/navigation'
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect } from 'react'
 
 const REVEAL_SELECTOR = '[data-reveal]'
 
 const ScrollEffects = () => {
   const pathname = usePathname()
-  const lenisRef = useRef<Lenis | null>(null)
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-
-    if (prefersReducedMotion) {
-      return
-    }
-
-    const lenis = new Lenis({
-      autoRaf: true,
-      anchors: true,
-      allowNestedScroll: true,
-      lerp: 0.08,
-      smoothWheel: true,
-      stopInertiaOnNavigate: true,
-    })
-
-    const handleScrollToTop = () => {
-      lenis.scrollTo(0, {
-        duration: 1.1,
-      })
-    }
-
-    lenisRef.current = lenis
-    window.addEventListener('app:scroll-to-top', handleScrollToTop)
-
-    return () => {
-      window.removeEventListener('app:scroll-to-top', handleScrollToTop)
-      lenis.destroy()
-      lenisRef.current = null
-    }
-  }, [])
-
-  useEffect(() => {
-    lenisRef.current?.resize()
-  }, [pathname])
 
   useLayoutEffect(() => {
     const nodes = Array.from(

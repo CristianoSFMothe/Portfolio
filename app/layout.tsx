@@ -5,6 +5,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
 import BackToTopButton from './_components/BackToTopButton'
+import LenisProvider from './_components/LenisProvider'
 import Navbar from './_components/Navbar'
 import ScrollEffects from './_components/ScrollEffects'
 import SleekLineCursor from './_components/SleekLineCursor'
@@ -98,6 +99,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} bg-background font-inter text-foreground min-h-screen antialiased`}
       >
+        <LenisProvider />
         <Navbar />
         {children}
         <ScrollEffects />

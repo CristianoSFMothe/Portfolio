@@ -1,5 +1,6 @@
 'use client'
 
+import { useLenis } from 'lenis/react'
 import { ArrowUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -9,6 +10,7 @@ import { Button } from './ui/button'
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const lenis = useLenis()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +26,15 @@ const BackToTopButton = () => {
   }, [])
 
   const handleBackToTop = () => {
-    window.dispatchEvent(new Event('app:scroll-to-top'))
+    if (lenis) {
+      lenis.scrollTo(0, {
+        duration: 1.2,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+      })
+      return
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
