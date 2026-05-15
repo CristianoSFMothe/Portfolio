@@ -1,18 +1,30 @@
 import CodeBadge from '@/app/_components/CodeBadge'
+import Tetris from '@/app/_components/ui/tetris'
 
 const Academic = () => {
   return (
     <section
-      className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      className='relative mx-auto max-w-368 overflow-hidden border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='academic'
     >
-      <div className='mb-12' data-reveal='up'>
+      <div className='pointer-events-none absolute inset-0'>
+        <Tetris
+          className='h-full mask-[radial-gradient(circle_at_center,white,transparent_80%)] opacity-70'
+          base={80}
+          borderColor='rgba(71, 250, 243, 0.05)'
+          fillColor='rgba(71, 250, 243, 0.4)'
+          hoverColor='rgba(71, 250, 243, 0.75)'
+        />
+        <div className='via-background/10 to-background/80 absolute inset-0 bg-linear-to-b from-transparent' />
+      </div>
+
+      <div className='relative z-10 mb-12' data-reveal='up'>
         <CodeBadge label='education' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Formação Acadêmica
         </h2>
       </div>
-      <div className='space-y-6'>
+      <div className='relative z-10 space-y-6'>
         <div
           className='glass-panel glass-card-hover p-8'
           data-reveal='up'
