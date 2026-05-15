@@ -1,5 +1,6 @@
 import About from './_components/about/About'
 import Academic from './_components/academic/Academic'
+import Blog from './_components/blog/Blog'
 import Experience from './_components/experience/Experience'
 import Hero from './_components/hero/Hero'
 import Projects from './_components/projects/Projects'
@@ -10,10 +11,11 @@ export default function Home() {
     <main>
       <Hero />
       <About />
-      <Technologies />
       <Academic />
       <Projects />
+      <Technologies />
       <Experience />
+      <Blog />
     </main>
   )
 }
