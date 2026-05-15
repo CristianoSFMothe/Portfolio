@@ -1,4 +1,5 @@
 import CodeBadge from '@/app/_components/CodeBadge'
+import { cn } from '@/app/_lib/utils'
 
 import ExperienceTimelineItem from './_components/ExperienceTimelineItem'
 import { experienceItems } from './_data/experience-items'
@@ -16,7 +17,13 @@ const Experience = () => {
         </h2>
       </div>
 
-      <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent md:before:mx-auto md:before:translate-x-0'>
+      <div
+        className={cn(
+          'relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full',
+          'before:w-0.5 before:-translate-x-px before:bg-linear-to-b before:from-transparent',
+          'before:via-white/20 before:to-transparent md:before:mx-auto md:before:translate-x-0',
+        )}
+      >
         {experienceItems.map((experience) => (
           <ExperienceTimelineItem
             key={`${experience.company}-${experience.role}`}

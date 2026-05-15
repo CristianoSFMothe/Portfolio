@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
+import BackToTopButton from './_components/BackToTopButton'
 import Navbar from './_components/Navbar'
 
 const inter = Inter({
@@ -96,6 +97,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <BackToTopButton />
       </body>
     </html>
   )
