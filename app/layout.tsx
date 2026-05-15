@@ -5,6 +5,7 @@ import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
 import BackToTopButton from './_components/BackToTopButton'
 import Navbar from './_components/Navbar'
+import SleekLineCursor from './_components/SleekLineCursor'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -97,6 +98,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <SleekLineCursor />
         <BackToTopButton />
       </body>
     </html>
