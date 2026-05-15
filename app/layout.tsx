@@ -1,3 +1,4 @@
+import 'lenis/dist/lenis.css'
 import './globals.css'
 
 import type { Metadata, Viewport } from 'next'
@@ -5,6 +6,7 @@ import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
 import BackToTopButton from './_components/BackToTopButton'
 import Navbar from './_components/Navbar'
+import ScrollEffects from './_components/ScrollEffects'
 import SleekLineCursor from './_components/SleekLineCursor'
 
 const inter = Inter({
@@ -98,6 +100,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <ScrollEffects />
         <SleekLineCursor />
         <BackToTopButton />
       </body>

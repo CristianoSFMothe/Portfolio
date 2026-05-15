@@ -6,13 +6,13 @@ const About = () => {
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='about'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-reveal='up'>
         <CodeBadge label='about-me' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Perfil Profissional
         </h2>
       </div>
-      <div className='glass-panel p-8'>
+      <div className='glass-panel p-8' data-reveal='up' data-reveal-delay='100'>
         <p className='font-inter text-on-surface-variant mb-6 text-lg'>
           Como Engenheiro de Software, dedico-me à criação de soluções robustas,
           escaláveis e eficientes. Acredito firmemente nos princípios do Clean

@@ -6,14 +6,18 @@ const Academic = () => {
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='academic'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-reveal='up'>
         <CodeBadge label='education' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Formação Acadêmica
         </h2>
       </div>
       <div className='space-y-6'>
-        <div className='glass-panel glass-card-hover p-8'>
+        <div
+          className='glass-panel glass-card-hover p-8'
+          data-reveal='up'
+          data-reveal-delay='80'
+        >
           <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
             Bacharelado em Ciência da Computação
           </h3>
@@ -26,7 +30,11 @@ const Academic = () => {
             sistemas distribuídos.
           </p>
         </div>
-        <div className='glass-panel glass-card-hover p-8'>
+        <div
+          className='glass-panel glass-card-hover p-8'
+          data-reveal='up'
+          data-reveal-delay='160'
+        >
           <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
             Pós-Graduação em Arquitetura de Software
           </h3>

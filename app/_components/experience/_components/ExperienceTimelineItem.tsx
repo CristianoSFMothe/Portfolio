@@ -13,6 +13,8 @@ import ExperienceSkillBadge from './ExperienceSkillBadge'
 
 export type ExperienceTimelineItemProps = ExperienceItem & {
   className?: string
+  reveal?: 'up' | 'left' | 'right' | 'scale'
+  revealDelay?: number
 }
 
 const ExperienceTimelineItem = ({
@@ -22,9 +24,15 @@ const ExperienceTimelineItem = ({
   responsibilities,
   skills,
   className,
+  reveal = 'up',
+  revealDelay = 0,
 }: ExperienceTimelineItemProps) => {
   return (
-    <div className='group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'>
+    <div
+      className='group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'
+      data-reveal={reveal}
+      data-reveal-delay={revealDelay}
+    >
       <div className='bg-surface-container-high text-primary z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2'>
         <Briefcase size={16} />
       </div>

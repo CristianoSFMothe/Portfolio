@@ -23,7 +23,7 @@ const Experience = () => {
         <div className='via-background/10 to-background/75 absolute inset-0 bg-linear-to-b from-transparent' />
       </div>
 
-      <div className='relative z-10 mb-12'>
+      <div className='relative z-10 mb-12' data-reveal='up'>
         <CodeBadge label='career-path' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Experiência Profissional
@@ -37,10 +37,12 @@ const Experience = () => {
           'before:via-white/20 before:to-transparent md:before:mx-auto md:before:translate-x-0',
         )}
       >
-        {experienceItems.map((experience) => (
+        {experienceItems.map((experience, index) => (
           <ExperienceTimelineItem
             key={`${experience.company}-${experience.role}`}
             {...experience}
+            reveal={index % 2 === 0 ? 'left' : 'right'}
+            revealDelay={index * 90}
           />
         ))}
       </div>

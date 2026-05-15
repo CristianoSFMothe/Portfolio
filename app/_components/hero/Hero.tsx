@@ -45,6 +45,7 @@ const Hero = () => {
             'z-10 flex w-full max-w-2xl flex-1 flex-col items-center space-y-6',
             'text-center sm:space-y-8 lg:max-w-3xl lg:items-start lg:pr-8 lg:text-left',
           )}
+          data-reveal='left'
           data-qa='hero-content'
         >
           <Badge
@@ -123,6 +124,8 @@ const Hero = () => {
         <figure
           aria-labelledby='hero-visual-caption'
           className='relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-10 xl:pr-16'
+          data-reveal='right'
+          data-reveal-delay='120'
           data-qa='hero-visual'
         >
           <figcaption className='sr-only' id='hero-visual-caption'>

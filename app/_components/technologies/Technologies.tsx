@@ -81,7 +81,7 @@ const Technologies = () => {
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
       id='technologies'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-reveal='up'>
         <CodeBadge label='tech-stack' />
         <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
           Principais Tecnologias
@@ -91,6 +91,8 @@ const Technologies = () => {
       <Carousel
         aria-label='Tecnologias'
         className='mx-auto w-full'
+        data-reveal='up'
+        data-reveal-delay='100'
         onBlurCapture={() => setIsPaused(false)}
         onFocusCapture={() => setIsPaused(true)}
         onMouseEnter={() => setIsPaused(true)}

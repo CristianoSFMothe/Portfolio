@@ -24,10 +24,7 @@ const BackToTopButton = () => {
   }, [])
 
   const handleBackToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
+    window.dispatchEvent(new Event('app:scroll-to-top'))
   }
 
   return (
