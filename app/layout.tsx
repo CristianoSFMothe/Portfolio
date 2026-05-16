@@ -4,7 +4,10 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
 import BackToTopButton from './_components/BackToTopButton'
+import Footer from './_components/Footer'
 import Navbar from './_components/Navbar'
+import ThemeProvider from './_components/ThemeProvider'
+import { Toaster } from './_components/ui/sonner'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -95,9 +98,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} bg-background font-inter text-foreground min-h-screen antialiased`}
       >
-        <Navbar />
-        {children}
-        <BackToTopButton />
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='dark'
+          enableSystem={false}
+        >
+          <Navbar />
+          {children}
+          <BackToTopButton />
+          <Footer />
+          <Toaster richColors />
+        </ThemeProvider>
       </body>
     </html>
   )
