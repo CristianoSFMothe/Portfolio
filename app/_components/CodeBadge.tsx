@@ -3,7 +3,11 @@ type CodeBadgeProps = {
 }
 
 const CodeBadge = ({ label }: CodeBadgeProps) => {
-  return <div className='code-badge'>&lt;{label} /&gt;</div>
+  return (
+    <div aria-hidden='true' className='code-badge'>
+      &lt;{label} /&gt;
+    </div>
+  )
 }
 
 export default CodeBadge

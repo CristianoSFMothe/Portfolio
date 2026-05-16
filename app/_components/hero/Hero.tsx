@@ -10,7 +10,7 @@ import FloatingBadge from './FloatingBadge'
 
 const Hero = () => {
   return (
-    <main
+    <div
       className='mx-auto max-w-368 px-6 sm:px-6 lg:px-10 xl:px-12'
       data-qa='hero-main'
     >
@@ -101,7 +101,7 @@ const Hero = () => {
                 'text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--shadow-primary-rgb),0.4)]',
               )}
               data-qa='hero-projects-link'
-              href='#projetos'
+              href='#projects'
             >
               Ver projetos
               <ArrowRight aria-hidden='true' size={20} />
@@ -113,7 +113,7 @@ const Hero = () => {
                 'rounded-lg px-8 py-3 text-sm font-bold transition-all duration-300 sm:w-auto',
               )}
               data-qa='hero-contact-link'
-              href='#contato'
+              href='#contact'
             >
               Entrar em contato
             </Link>
@@ -182,7 +182,7 @@ const Hero = () => {
           </div>
         </figure>
       </section>
-    </main>
+    </div>
   )
 }
 

@@ -6,17 +6,23 @@ import ProjectsButton from './_components/ProjectsButton'
 const Projects = () => {
   return (
     <section
+      aria-labelledby='projects-title'
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      data-qa='projects-section'
       id='projects'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-qa='projects-header'>
         <CodeBadge label='featured-work' />
-        <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
+        <h2
+          className='font-jakarta text-on-surface text-3xl font-bold'
+          data-qa='projects-title'
+          id='projects-title'
+        >
           Projetos em Destaque
         </h2>
       </div>
 
-      <div className='mb-12 space-y-12'>
+      <div className='mb-12 space-y-12' data-qa='projects-list'>
         <ProjectCard
           title='Plataforma de E-Commerce Global'
           description='Arquitetura e desenvolvimento de uma plataforma de e-commerce altamente escalável, capaz de processar milhares de transações simultâneas com latência mínima.'
@@ -63,7 +69,7 @@ const Projects = () => {
         />
       </div>
 
-      <div className='glass-panel p-8 text-center'>
+      <div className='glass-panel p-8 text-center' data-qa='projects-cta'>
         <p className='font-inter text-on-surface mb-6 text-lg'>
           Interessado em ver mais soluções que construí?
         </p>

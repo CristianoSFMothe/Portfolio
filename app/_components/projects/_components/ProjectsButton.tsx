@@ -31,9 +31,14 @@ const ProjectsButton = ({
         className,
       )}
     >
-      <Link href={href} {...props}>
+      <Link
+        aria-label={label}
+        data-qa={`projects-button-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+        href={href}
+        {...props}
+      >
         {label}
-        {icon ?? <ArrowRight size={20} />}
+        {icon ?? <ArrowRight aria-hidden='true' size={20} />}
       </Link>
     </Button>
   )

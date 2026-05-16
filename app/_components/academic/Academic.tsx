@@ -3,17 +3,26 @@ import CodeBadge from '@/app/_components/CodeBadge'
 const Academic = () => {
   return (
     <section
+      aria-labelledby='academic-title'
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      data-qa='academic-section'
       id='academic'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-qa='academic-header'>
         <CodeBadge label='education' />
-        <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
+        <h2
+          className='font-jakarta text-on-surface text-3xl font-bold'
+          data-qa='academic-title'
+          id='academic-title'
+        >
           Formação Acadêmica
         </h2>
       </div>
-      <div className='space-y-6'>
-        <div className='glass-panel glass-card-hover p-8'>
+      <div className='space-y-6' data-qa='academic-list'>
+        <div
+          className='glass-panel glass-card-hover p-8'
+          data-qa='academic-item-bachelor'
+        >
           <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
             Bacharelado em Ciência da Computação
           </h3>
@@ -26,7 +35,10 @@ const Academic = () => {
             sistemas distribuídos.
           </p>
         </div>
-        <div className='glass-panel glass-card-hover p-8'>
+        <div
+          className='glass-panel glass-card-hover p-8'
+          data-qa='academic-item-postgraduate'
+        >
           <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
             Pós-Graduação em Arquitetura de Software
           </h3>

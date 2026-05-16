@@ -29,6 +29,9 @@ const navItems = [
   { href: '#contact', label: 'Contato' },
 ]
 
+const getNavItemQa = (href: string) =>
+  `nav-link-${href.replace(/^#/, '').replace(/^\//, 'home')}`
+
 const Navbar = () => {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -52,10 +55,12 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label='Navegação principal'
       className={cn(
         'bg-surface/40 sticky top-0 z-50 w-full border-b border-white/10 backdrop-blur-xl',
         'relative shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.1)]',
       )}
+      data-qa='navbar'
     >
       <div
         className={cn(
@@ -67,6 +72,7 @@ const Navbar = () => {
         <Link
           href='/'
           className='absolute left-1/2 flex shrink-0 -translate-x-1/2 items-center min-[1120px]:static min-[1120px]:translate-x-0'
+          data-qa='navbar-home-link'
           onClick={handleCloseMenu}
         >
           <Image
@@ -76,11 +82,18 @@ const Navbar = () => {
             height={30}
             priority
             className='h-auto w-24 object-contain min-[1120px]:w-32 sm:w-28 xl:w-36'
+            data-qa='navbar-logo'
           />
         </Link>
 
-        <div className='ml-auto flex items-center gap-2 sm:gap-3'>
-          <div className='hidden items-center gap-1 min-[1120px]:flex xl:gap-2'>
+        <div
+          className='ml-auto flex items-center gap-2 sm:gap-3'
+          data-qa='navbar-actions'
+        >
+          <div
+            className='hidden items-center gap-1 min-[1120px]:flex xl:gap-2'
+            data-qa='navbar-desktop-links'
+          >
             {navItems.map((item) => {
               const isActive = pathname === item.href
 
@@ -89,6 +102,7 @@ const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   aria-current={isActive ? 'page' : undefined}
+                  data-qa={getNavItemQa(item.href)}
                   className={cn(
                     'font-jetbrains rounded-lg px-2 py-2 text-[13px] leading-none transition-all duration-300 xl:px-3',
                     isActive
@@ -103,6 +117,7 @@ const Navbar = () => {
           </div>
 
           <Button
+            aria-label='Baixar currículo'
             className={cn(
               'from-primary-container to-secondary-container rounded-lg',
               'font-jetbrains hidden border border-white/20 bg-linear-to-r px-4',
@@ -110,6 +125,7 @@ const Navbar = () => {
               'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
               'min-[1120px]:h-9 min-[1120px]:px-5 min-[1120px]:text-xs',
             )}
+            data-qa='navbar-download-cv'
           >
             Baixar CV
           </Button>
@@ -121,6 +137,7 @@ const Navbar = () => {
                 size='icon'
                 className='text-on-surface border border-white/10 bg-transparent hover:bg-white/5 min-[1120px]:hidden'
                 aria-label='Abrir menu'
+                data-qa='navbar-mobile-menu-button'
               >
                 <Menu size={24} />
               </Button>
@@ -133,6 +150,7 @@ const Navbar = () => {
                 'bg-surface/95 w-[min(88vw,24rem)] border-l border-white/10 p-0 backdrop-blur-xl min-[1120px]:hidden',
                 'shadow-[0_18px_40px_rgba(0,0,0,0.38)]',
               )}
+              data-qa='navbar-mobile-sheet'
             >
               <SheetHeader className='border-b border-white/10 p-5 text-left'>
                 <SheetTitle className='font-jakarta text-primary-fixed text-base'>
@@ -144,7 +162,7 @@ const Navbar = () => {
               </SheetHeader>
 
               <div className='flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4'>
-                <div className='grid gap-2'>
+                <div className='grid gap-2' data-qa='navbar-mobile-links'>
                   {navItems.map((item) => {
                     const isActive = pathname === item.href
 
@@ -153,6 +171,7 @@ const Navbar = () => {
                         <Link
                           href={item.href}
                           aria-current={isActive ? 'page' : undefined}
+                          data-qa={`mobile-${getNavItemQa(item.href)}`}
                           className={cn(
                             'font-jetbrains rounded-xl border px-4 py-3 text-sm transition-all duration-300',
                             isActive
@@ -169,12 +188,14 @@ const Navbar = () => {
 
                 <SheetClose asChild>
                   <Button
+                    aria-label='Baixar currículo'
                     className={cn(
                       'from-primary-container to-secondary-container mt-auto',
                       'w-full rounded-xl border border-white/20 bg-linear-to-r',
                       'font-jetbrains px-6 py-3 text-sm font-bold text-white',
                       'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
                     )}
+                    data-qa='navbar-mobile-download-cv'
                   >
                     Baixar CV
                   </Button>

@@ -27,13 +27,22 @@ const ExperienceTimelineItem = ({
   skills,
   className,
 }: ExperienceTimelineItemProps) => {
+  const qaSlug = company.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+
   return (
-    <div className='group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'>
-      <div className='bg-surface-container-high text-primary z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2'>
+    <div
+      className='group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'
+      data-qa={`experience-item-${qaSlug}`}
+    >
+      <div
+        aria-hidden='true'
+        className='bg-surface-container-high text-primary z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2'
+      >
         <Briefcase size={16} />
       </div>
 
       <Card
+        aria-labelledby={`experience-role-${qaSlug}`}
         className={cn(
           'glass-panel glass-card-hover w-[calc(100%-4rem)] gap-0 border-white/10 bg-transparent py-0 shadow-none md:w-[calc(50%-2.5rem)]',
           className,
@@ -44,7 +53,12 @@ const ExperienceTimelineItem = ({
             <CardTitle className='font-jakarta text-on-surface text-xl font-bold'>
               {company}
             </CardTitle>
-            <p className='font-jetbrains text-secondary my-1 text-sm'>{role}</p>
+            <p
+              className='font-jetbrains text-secondary my-1 text-sm'
+              id={`experience-role-${qaSlug}`}
+            >
+              {role}
+            </p>
             <CardDescription className='font-inter text-on-surface-variant text-sm'>
               {period}
             </CardDescription>

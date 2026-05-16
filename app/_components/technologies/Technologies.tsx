@@ -78,12 +78,18 @@ const Technologies = () => {
 
   return (
     <section
+      aria-labelledby='technologies-title'
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      data-qa='technologies-section'
       id='technologies'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-qa='technologies-header'>
         <CodeBadge label='tech-stack' />
-        <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
+        <h2
+          className='font-jakarta text-on-surface text-3xl font-bold'
+          data-qa='technologies-title'
+          id='technologies-title'
+        >
           Principais Tecnologias
         </h2>
       </div>
@@ -91,6 +97,7 @@ const Technologies = () => {
       <Carousel
         aria-label='Tecnologias'
         className='mx-auto w-full'
+        data-qa='technologies-carousel'
         onBlurCapture={() => setIsPaused(false)}
         onFocusCapture={() => setIsPaused(true)}
         onMouseEnter={() => setIsPaused(true)}
@@ -108,8 +115,16 @@ const Technologies = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className='bg-surface/80 text-on-surface hover:bg-surface -left-4 hidden border-white/10 md:flex lg:-left-5' />
-        <CarouselNext className='bg-surface/80 text-on-surface hover:bg-surface -right-4 hidden border-white/10 md:flex lg:-right-5' />
+        <CarouselPrevious
+          aria-label='Tecnologia anterior'
+          className='bg-surface/80 text-on-surface hover:bg-surface -left-4 hidden border-white/10 md:flex lg:-left-5'
+          data-qa='technologies-carousel-previous'
+        />
+        <CarouselNext
+          aria-label='Próxima tecnologia'
+          className='bg-surface/80 text-on-surface hover:bg-surface -right-4 hidden border-white/10 md:flex lg:-right-5'
+          data-qa='technologies-carousel-next'
+        />
       </Carousel>
     </section>
   )

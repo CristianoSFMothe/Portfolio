@@ -9,7 +9,7 @@ import Technologies from './_components/technologies/Technologies'
 
 export default function Home() {
   return (
-    <main>
+    <main data-qa='app-main' id='main-content'>
       <Hero />
       <About />
       <Academic />

@@ -36,6 +36,7 @@ const BackToTopButton = () => {
       size='icon-lg'
       aria-label='Voltar ao topo'
       title='Voltar ao topo'
+      data-qa='back-to-top-button'
       onClick={handleBackToTop}
       className={cn(
         'from-primary-container to-secondary-container via-[#0d5fd1]',
@@ -48,7 +49,7 @@ const BackToTopButton = () => {
           : 'pointer-events-none translate-y-4 opacity-0',
       )}
     >
-      <ArrowUp size={18} />
+      <ArrowUp aria-hidden='true' size={18} />
     </Button>
   )
 }
