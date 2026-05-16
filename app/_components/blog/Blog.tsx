@@ -7,18 +7,27 @@ import BlogPostCard from './_components/BlogPostCard'
 const Blog = () => {
   return (
     <section
+      aria-labelledby='blog-title'
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      data-qa='blog-section'
       id='blog'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-qa='blog-header'>
         <CodeBadge label='blog-posts' />
 
-        <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
+        <h2
+          className='font-jakarta text-on-surface text-3xl font-bold'
+          data-qa='blog-title'
+          id='blog-title'
+        >
           Blog / Artigos Técnicos
         </h2>
       </div>
 
-      <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+      <div
+        className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'
+        data-qa='blog-list'
+      >
         <BlogPostCard
           title='Minha transição para QA Dev: Desafios e Aprendizados'
           description='Como a mentalidade de testes mudou minha forma de escrever código e gerenciar projetos complexos.'

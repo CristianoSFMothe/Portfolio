@@ -12,6 +12,7 @@ const ProjectTechnologyBadge = ({
 }: ProjectTechnologyBadgeProps) => {
   return (
     <Badge
+      data-qa={`project-technology-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
       variant='outline'
       className={cn(
         'border-primary/10 bg-primary/10 text-primary font-jetbrains rounded px-3 py-1 text-sm',

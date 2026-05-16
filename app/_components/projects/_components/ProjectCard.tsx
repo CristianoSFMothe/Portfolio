@@ -35,12 +35,16 @@ const ProjectCard = ({
   className,
   referrerPolicy = 'no-referrer',
 }: ProjectCardProps) => {
+  const qaSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+
   return (
     <Card
+      aria-labelledby={`project-title-${qaSlug}`}
       className={cn(
         'glass-panel glass-card-hover gap-0 border-white/10 bg-transparent py-0 shadow-none',
         className,
       )}
+      data-qa={`project-card-${qaSlug}`}
     >
       <CardContent className='flex flex-col items-center gap-8 p-6 md:flex-row'>
         <div className='relative h-62.5 w-full md:h-75 md:w-1/2'>
@@ -49,12 +53,16 @@ const ProjectCard = ({
             alt={imageAlt}
             fill
             className='rounded-lg border border-white/10 object-cover shadow-lg'
+            data-qa='project-card-image'
             referrerPolicy={referrerPolicy}
           />
         </div>
 
         <div className='w-full space-y-4 md:w-1/2'>
-          <CardTitle className='font-jakarta text-on-surface text-2xl leading-tight font-bold'>
+          <CardTitle
+            className='font-jakarta text-on-surface text-2xl leading-tight font-bold'
+            id={`project-title-${qaSlug}`}
+          >
             {title}
           </CardTitle>
           <CardDescription className='font-inter text-on-surface-variant text-base'>

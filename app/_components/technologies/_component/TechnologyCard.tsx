@@ -9,7 +9,11 @@ type TechnologyCardProps = {
 
 const TechnologyCard = ({ icon, label }: TechnologyCardProps) => {
   return (
-    <Card className='glass-panel glass-card-hover h-full border-white/10 bg-transparent py-0 shadow-none'>
+    <Card
+      aria-label={label}
+      className='glass-panel glass-card-hover h-full border-white/10 bg-transparent py-0 shadow-none'
+      data-qa={`technology-card-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+    >
       <CardContent className='flex min-h-36 flex-col items-center justify-center gap-3 p-6 text-center'>
         <div aria-hidden='true'>{icon}</div>
         <span className='font-jetbrains text-on-surface text-sm'>{label}</span>

@@ -16,12 +16,17 @@ const ContactLinkCard = ({
   icon: Icon,
   iconClassName,
 }: ContactLinkCardProps) => {
+  const qaSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+
   return (
     <Link
+      aria-label={`${description}: ${title}`}
       className='glass-panel glass-card-hover group flex items-center gap-4 p-6'
+      data-qa={`contact-link-card-${qaSlug}`}
       href={href}
     >
       <div
+        aria-hidden='true'
         className={`flex h-12 w-12 items-center justify-center rounded-full transition-colors ${iconClassName}`}
       >
         <Icon size={24} />

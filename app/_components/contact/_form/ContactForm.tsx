@@ -52,7 +52,12 @@ const ContactForm = () => {
 
   return (
     <Form {...form}>
-      <form className='space-y-6' onSubmit={form.handleSubmit(handleSubmit)}>
+      <form
+        className='space-y-6'
+        data-qa='contact-form'
+        noValidate
+        onSubmit={form.handleSubmit(handleSubmit)}
+      >
         <FormField
           control={form.control}
           name='name'
@@ -66,6 +71,7 @@ const ContactForm = () => {
                   placeholder='Seu nome'
                   className={fieldClassName}
                   autoComplete='name'
+                  data-qa='contact-form-name'
                   {...field}
                 />
               </FormControl>
@@ -88,6 +94,7 @@ const ContactForm = () => {
                   placeholder='seu@email.com'
                   className={fieldClassName}
                   autoComplete='email'
+                  data-qa='contact-form-email'
                   {...field}
                 />
               </FormControl>
@@ -108,6 +115,7 @@ const ContactForm = () => {
                 <Input
                   placeholder='Assunto da mensagem'
                   className={fieldClassName}
+                  data-qa='contact-form-subject'
                   {...field}
                 />
               </FormControl>
@@ -134,6 +142,7 @@ const ContactForm = () => {
                     'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none',
                     'aria-invalid:border-destructive aria-invalid:ring-destructive/20',
                   )}
+                  data-qa='contact-form-message'
                   {...field}
                 />
               </FormControl>
@@ -143,11 +152,12 @@ const ContactForm = () => {
         />
 
         <Button
+          data-qa='contact-form-submit'
           className='from-primary-container to-secondary-container font-jetbrains h-auto w-full rounded-lg bg-linear-to-r px-8 py-4 text-sm font-bold text-white shadow-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.4)]'
           type='submit'
         >
           Enviar Mensagem
-          <Send size={20} />
+          <Send aria-hidden='true' size={20} />
         </Button>
       </form>
     </Form>

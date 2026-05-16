@@ -6,12 +6,18 @@ import ExperienceTimelineItem from './_components/ExperienceTimelineItem'
 const Experience = () => {
   return (
     <section
+      aria-labelledby='experience-title'
       className='relative mx-auto max-w-368 border-t border-white/5 px-6 py-24 lg:px-10 xl:px-12'
+      data-qa='experience-section'
       id='experience'
     >
-      <div className='mb-12'>
+      <div className='mb-12' data-qa='experience-header'>
         <CodeBadge label='career-path' />
-        <h2 className='font-jakarta text-on-surface text-3xl font-bold'>
+        <h2
+          className='font-jakarta text-on-surface text-3xl font-bold'
+          data-qa='experience-title'
+          id='experience-title'
+        >
           Experiência Profissional
         </h2>
       </div>
@@ -22,6 +28,7 @@ const Experience = () => {
           'before:w-0.5 before:-translate-x-px before:bg-linear-to-b before:from-transparent',
           'before:via-white/20 before:to-transparent md:before:mx-auto md:before:translate-x-0',
         )}
+        data-qa='experience-timeline'
       >
         <ExperienceTimelineItem
           company='TechCorp Global'
