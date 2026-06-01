@@ -73,7 +73,7 @@ const Projects = () => {
         <p className='font-inter text-on-surface mb-6 text-lg'>
           Interessado em ver mais soluções que construí?
         </p>
-        <ProjectsButton href='#' label='Ver todos os projetos' />
+        <ProjectsButton href='/projects' label='Ver todos os projetos' />
       </div>
     </section>
   )
