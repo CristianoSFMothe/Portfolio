@@ -1,5 +1,6 @@
 import HeroSection from './_components/HeroSection'
 import ProjectCard from './_components/ProjectCard'
+import ProjectsPagination from './_components/ProjectsPagination'
 import { getProjects } from './_data/projects'
 
 const ProjectPage = async () => {
@@ -14,6 +15,8 @@ const ProjectPage = async () => {
           <ProjectCard key={id} {...project} />
         ))}
       </section>
+
+      <ProjectsPagination totalPages={10} />
     </main>
   )
 }
