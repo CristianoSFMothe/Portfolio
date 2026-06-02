@@ -13,14 +13,6 @@ import {
 } from '@/app/_components/ui/pagination'
 import { cn } from '@/app/_lib/utils'
 
-/**
- * Estilo de cada célula da paginação, mantendo o visual do design:
- * - inativa: borda/texto suaves com hover em primary
- * - ativa: destaque em secondary
- *
- * Aplicado sobre o `Button` (variant `ghost`), por isso os estados de
- * hover sobrescrevem explicitamente os do ghost (inclusive no dark).
- */
 const cellVariants = cva(
   'font-jetbrains size-10 rounded-lg border text-sm transition-all',
   {
@@ -42,10 +34,6 @@ type PaginationCell = number | 'ellipsis-left' | 'ellipsis-right'
 const range = (start: number, end: number): number[] =>
   Array.from({ length: end - start + 1 }, (_, index) => start + index)
 
-/**
- * Calcula os itens visíveis da paginação com reticências.
- * Sempre mantém a primeira e a última página visíveis.
- */
 const getPaginationCells = (
   currentPage: number,
   totalPages: number,

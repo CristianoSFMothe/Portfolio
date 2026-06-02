@@ -58,10 +58,6 @@ export const getProjects = async (): Promise<Project[]> => {
   return projects
 }
 
-/**
- * Busca um projeto pelo slug (usado na rota /projects/[slug]).
- * Retorna `null` quando não encontra — a página chama `notFound()`.
- */
 export const getProjectBySlug = async (
   slug: string,
 ): Promise<Project | null> => {

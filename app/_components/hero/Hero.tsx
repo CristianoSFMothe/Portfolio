@@ -89,7 +89,10 @@ const Hero = () => {
 
           <div
             aria-label='Acoes principais'
-            className='flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 sm:pt-4 lg:justify-start'
+            className={cn(
+              'flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:justify-center',
+              'sm:gap-4 sm:pt-4 lg:justify-start',
+            )}
             data-qa='hero-actions'
             role='group'
           >
@@ -109,8 +112,9 @@ const Hero = () => {
             <Link
               aria-label='Entrar em contato'
               className={cn(
-                'glass-panel font-jetbrains text-primary hover:bg-primary/10 flex w-full items-center justify-center gap-2',
-                'rounded-lg px-8 py-3 text-sm font-bold transition-all duration-300 sm:w-auto',
+                'glass-panel font-jetbrains text-primary hover:bg-primary/10 flex w-full',
+                'items-center justify-center gap-2 rounded-lg px-8 py-3 text-sm',
+                'font-bold transition-all duration-300 sm:w-auto',
               )}
               data-qa='hero-contact-link'
               href='#contact'

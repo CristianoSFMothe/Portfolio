@@ -1,6 +1,8 @@
 import { ExternalLink, type LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { cn } from '@/app/_lib/utils'
+
 export type BlogPostCardProps = {
   title: string
   description: string
@@ -48,7 +50,10 @@ const BlogPostCard = ({
 
       <Link
         aria-label={`Ler artigo: ${title}`}
-        className='text-primary hover:text-secondary font-jetbrains inline-flex items-center gap-2 text-sm transition-colors'
+        className={cn(
+          'text-primary hover:text-secondary font-jetbrains inline-flex',
+          'items-center gap-2 text-sm transition-colors',
+        )}
         data-qa={`blog-post-link-${qaSlug}`}
         href={href}
       >

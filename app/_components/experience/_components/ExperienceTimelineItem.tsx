@@ -36,7 +36,11 @@ const ExperienceTimelineItem = ({
     >
       <div
         aria-hidden='true'
-        className='bg-surface-container-high text-primary z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2'
+        className={cn(
+          'bg-surface-container-high text-primary z-10 flex h-10 w-10 shrink-0',
+          'items-center justify-center rounded-full border border-white/20 shadow md:order-1',
+          'md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2',
+        )}
       >
         <Briefcase size={16} />
       </div>
@@ -44,7 +48,8 @@ const ExperienceTimelineItem = ({
       <Card
         aria-labelledby={`experience-role-${qaSlug}`}
         className={cn(
-          'glass-panel glass-card-hover w-[calc(100%-4rem)] gap-0 border-white/10 bg-transparent py-0 shadow-none md:w-[calc(50%-2.5rem)]',
+          'glass-panel glass-card-hover w-[calc(100%-4rem)] gap-0 border-white/10',
+          'bg-transparent py-0 shadow-none md:w-[calc(50%-2.5rem)]',
           className,
         )}
       >

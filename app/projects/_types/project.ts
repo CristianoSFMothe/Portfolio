@@ -16,8 +16,6 @@ export type Project = {
   technologies: ProjectTechnology[]
   detailHref?: string
   detailLabel?: string
-  /** Link do deploy/demo (Hygraph: liveProjectUrl). */
   liveUrl?: string
-  /** Link do repositório (Hygraph: githubUrl). */
   repoUrl?: string
 }
