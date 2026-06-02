@@ -96,7 +96,7 @@ export default function RootLayout({
   return (
     <html lang='pt-BR' className='dark' suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} bg-background font-inter text-foreground min-h-screen antialiased`}
+        className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} bg-background font-inter text-foreground flex min-h-screen flex-col antialiased`}
       >
         <ThemeProvider
           attribute='class'

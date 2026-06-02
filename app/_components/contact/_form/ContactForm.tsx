@@ -153,7 +153,7 @@ const ContactForm = () => {
 
         <Button
           data-qa='contact-form-submit'
-          className='from-primary-container to-secondary-container font-jetbrains h-auto w-full rounded-lg bg-linear-to-r px-8 py-4 text-sm font-bold text-white shadow-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.4)]'
+          className='btn-gradient to-secondary-container hover:shadow-glow-primary-strong h-auto w-full rounded-lg px-8 py-4 text-sm shadow-none'
           type='submit'
         >
           Enviar Mensagem

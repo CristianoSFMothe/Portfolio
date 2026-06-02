@@ -24,10 +24,8 @@ const ProjectsButton = ({
     <Button
       asChild
       className={cn(
-        'from-primary-container to-inverse-primary font-jetbrains h-auto rounded-lg border',
-        'border-white/20 bg-linear-to-r px-8 py-3 text-sm font-bold text-white',
-        'shadow-[0_8px_20px_rgba(var(--shadow-primary-rgb),0.18)] transition-all',
-        'duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.4)]',
+        'btn-gradient to-inverse-primary h-auto rounded-lg border border-white/20',
+        'shadow-glow-primary hover:shadow-glow-primary-strong px-8 py-3 text-sm',
         className,
       )}
     >
