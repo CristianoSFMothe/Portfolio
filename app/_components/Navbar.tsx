@@ -119,10 +119,8 @@ const Navbar = () => {
           <Button
             aria-label='Baixar currículo'
             className={cn(
-              'from-primary-container to-secondary-container rounded-lg',
-              'font-jetbrains hidden border border-white/20 bg-linear-to-r px-4',
-              'text-[11px] font-bold text-white shadow-[0_8px_20px_rgba(var(--shadow-primary-rgb),0.18)] sm:inline-flex',
-              'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
+              'btn-gradient to-secondary-container hidden rounded-lg border border-white/20 px-4',
+              'shadow-glow-primary hover:shadow-glow-primary-sm text-[11px] sm:inline-flex',
               'min-[1120px]:h-9 min-[1120px]:px-5 min-[1120px]:text-xs',
             )}
             data-qa='navbar-download-cv'
@@ -190,10 +188,9 @@ const Navbar = () => {
                   <Button
                     aria-label='Baixar currículo'
                     className={cn(
-                      'from-primary-container to-secondary-container mt-auto',
-                      'w-full rounded-xl border border-white/20 bg-linear-to-r',
-                      'font-jetbrains px-6 py-3 text-sm font-bold text-white',
-                      'transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--shadow-primary-rgb),0.4)]',
+                      'btn-gradient to-secondary-container mt-auto w-full rounded-xl',
+                      'border border-white/20 px-6 py-3 text-sm',
+                      'hover:shadow-glow-primary-sm',
                     )}
                     data-qa='navbar-mobile-download-cv'
                   >

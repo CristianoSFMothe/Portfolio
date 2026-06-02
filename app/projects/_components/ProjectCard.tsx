@@ -20,18 +20,20 @@ export type ProjectCardProps = Omit<Project, 'id'> & {
 }
 
 const ProjectCard = ({
+  slug,
   title,
   description,
   imageSrc,
   imageAlt,
   technologies,
   status,
+  detailHref,
   detailLabel,
   className,
   referrerPolicy = 'no-referrer',
 }: ProjectCardProps) => {
-  const qaSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
-  const titleId = `project-card-title-${qaSlug}`
+  const titleId = `project-card-title-${slug}`
+  const detailUrl = detailHref ?? `/projects/${slug}`
 
   return (
     <Card
@@ -41,7 +43,7 @@ const ProjectCard = ({
         'rounded-xl border-0 bg-transparent py-0 shadow-none',
         className,
       )}
-      data-qa={`project-card-${qaSlug}`}
+      data-qa={`project-card-${slug}`}
     >
       {status ? <ProjectStatusBadge label={status} /> : null}
 
@@ -79,7 +81,7 @@ const ProjectCard = ({
           ))}
         </div>
 
-        <ProjectDetailButton label={detailLabel} />
+        <ProjectDetailButton href={detailUrl} label={detailLabel} />
       </CardContent>
     </Card>
   )

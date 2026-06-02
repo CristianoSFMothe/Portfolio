@@ -7,6 +7,7 @@ export type ProjectTechnology = {
 
 export type Project = {
   id: string
+  slug: string
   title: string
   description: string
   imageSrc: string
@@ -15,4 +16,8 @@ export type Project = {
   technologies: ProjectTechnology[]
   detailHref?: string
   detailLabel?: string
+  /** Link do deploy/demo (Hygraph: liveProjectUrl). */
+  liveUrl?: string
+  /** Link do repositório (Hygraph: githubUrl). */
+  repoUrl?: string
 }

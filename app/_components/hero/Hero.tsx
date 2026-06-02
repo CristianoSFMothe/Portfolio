@@ -96,9 +96,9 @@ const Hero = () => {
             <Link
               aria-label='Ver projetos'
               className={cn(
-                'from-primary-container to-inverse-primary font-jetbrains w-full justify-center px-8 py-3 text-sm sm:w-auto',
-                'flex items-center gap-2 rounded-lg border border-white/20 bg-linear-to-r font-bold',
-                'text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--shadow-primary-rgb),0.4)]',
+                'btn-gradient to-inverse-primary flex w-full items-center justify-center gap-2',
+                'rounded-lg border border-white/20 px-8 py-3 text-sm sm:w-auto',
+                'hover:shadow-glow-primary-strong',
               )}
               data-qa='hero-projects-link'
               href='#projects'

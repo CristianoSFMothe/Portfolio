@@ -100,6 +100,11 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Glow azul (primary) usado nos botões em gradiente. */
+  --shadow-glow-primary: 0 8px 20px rgba(var(--shadow-primary-rgb), 0.18);
+  --shadow-glow-primary-strong: 0 0 20px rgba(var(--shadow-primary-rgb), 0.4);
+  --shadow-glow-primary-sm: 0 0 15px rgba(var(--shadow-primary-rgb), 0.4);
 }
 
 :root {
@@ -268,5 +273,14 @@
 
   .code-badge {
     @apply border-outline/30 bg-surface-variant/50 font-jetbrains text-secondary mb-4 inline-block rounded border px-3 py-1 text-sm font-medium tracking-wider;
+  }
+
+  /*
+   * Núcleo compartilhado dos botões em gradiente (CTA primário).
+   * Não define a cor final do gradiente (`to-*`), a borda, o raio nem o
+   * padding — isso fica em cada uso, pois variam entre os botões.
+   */
+  .btn-gradient {
+    @apply from-primary-container font-jetbrains bg-linear-to-r font-bold text-white transition-all duration-300;
   }
 }

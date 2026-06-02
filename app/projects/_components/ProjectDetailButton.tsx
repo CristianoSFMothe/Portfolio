@@ -1,20 +1,23 @@
 import { ArrowRight } from 'lucide-react'
-import type { ComponentProps } from 'react'
+import Link from 'next/link'
 
 import { Button } from '@/app/_components/ui/button'
 import { cn } from '@/app/_lib/utils'
 
-export type ProjectDetailButtonProps = ComponentProps<typeof Button> & {
+export type ProjectDetailButtonProps = {
+  href: string
   label?: string
+  className?: string
 }
 
 const ProjectDetailButton = ({
+  href,
   label = 'Ver Detalhes',
   className,
-  ...props
 }: ProjectDetailButtonProps) => {
   return (
     <Button
+      asChild
       variant='outline'
       className={cn(
         'border-primary text-primary hover:bg-primary/10 font-jetbrains',
@@ -23,10 +26,11 @@ const ProjectDetailButton = ({
         className,
       )}
       data-qa='project-detail-button'
-      {...props}
     >
-      {label}
-      <ArrowRight aria-hidden='true' />
+      <Link href={href}>
+        {label}
+        <ArrowRight aria-hidden='true' />
+      </Link>
     </Button>
   )
 }
