@@ -9,23 +9,12 @@ import {
 } from '@/app/_components/ui/card'
 import { cn } from '@/app/_lib/utils'
 
+import type { Project } from '../_types/project'
 import ProjectDetailButton from './ProjectDetailButton'
 import ProjectStatusBadge from './ProjectStatusBadge'
-import ProjectTechTag, { type ProjectTechTone } from './ProjectTechTag'
+import ProjectTechTag from './ProjectTechTag'
 
-export type ProjectTech = {
-  label: string
-  tone?: ProjectTechTone
-}
-
-export type ProjectCardProps = {
-  title: string
-  description: string
-  imageSrc: string
-  imageAlt: string
-  technologies: ProjectTech[]
-  status?: string
-  detailLabel?: string
+export type ProjectCardProps = Omit<Project, 'id'> & {
   className?: string
   referrerPolicy?: ComponentProps<typeof Image>['referrerPolicy']
 }

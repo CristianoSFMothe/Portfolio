@@ -1,7 +1,7 @@
 import { Badge } from '@/app/_components/ui/badge'
 import { cn } from '@/app/_lib/utils'
 
-export type ProjectTechTone = 'primary' | 'tertiary' | 'neutral'
+import type { ProjectTechTone } from '../_types/project'
 
 const toneStyles: Record<ProjectTechTone, string> = {
   primary: 'bg-primary-container/20 text-primary border-primary/30',
