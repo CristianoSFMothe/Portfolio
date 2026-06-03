@@ -1,6 +1,15 @@
 import CodeBadge from '@/app/_components/CodeBadge'
+import RichText from '@/app/_components/RichText'
 
-const Academic = () => {
+import { getAcademics } from './_data/academic'
+
+const Academic = async () => {
+  const academics = await getAcademics()
+
+  if (academics.length === 0) {
+    return null
+  }
+
   return (
     <section
       aria-labelledby='academic-title'
@@ -19,37 +28,24 @@ const Academic = () => {
         </h2>
       </div>
       <div className='space-y-6' data-qa='academic-list'>
-        <div
-          className='glass-panel glass-card-hover p-8'
-          data-qa='academic-item-bachelor'
-        >
-          <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
-            Bacharelado em Ciência da Computação
-          </h3>
-          <p className='font-jetbrains text-primary mb-4 text-sm'>
-            Universidade Federal - 2015 a 2019
-          </p>
-          <p className='font-inter text-on-surface-variant'>
-            Foco em algoritmos, estruturas de dados, e engenharia de software
-            fundamental. Desenvolvimento de projetos acadêmicos com ênfase em
-            sistemas distribuídos.
-          </p>
-        </div>
-        <div
-          className='glass-panel glass-card-hover p-8'
-          data-qa='academic-item-postgraduate'
-        >
-          <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
-            Pós-Graduação em Arquitetura de Software
-          </h3>
-          <p className='font-jetbrains text-primary mb-4 text-sm'>
-            Instituto de Tecnologia - 2020 a 2021
-          </p>
-          <p className='font-inter text-on-surface-variant'>
-            Especialização em padrões de projeto, arquiteturas escaláveis, cloud
-            computing e práticas avançadas de desenvolvimento de software.
-          </p>
-        </div>
+        {academics.map((academic, index) => (
+          <div
+            className='glass-panel glass-card-hover p-8'
+            data-qa={`academic-item-${index}`}
+            key={`${academic.degree}-${index}`}
+          >
+            <h3 className='font-jakarta text-on-surface mb-2 text-2xl font-semibold'>
+              {academic.degree}
+            </h3>
+            <p className='font-jetbrains text-primary mb-4 text-sm'>
+              {academic.institution} - {academic.period}
+            </p>
+            <RichText
+              className='font-inter text-on-surface-variant'
+              html={academic.descriptionHtml}
+            />
+          </div>
+        ))}
       </div>
     </section>
   )
