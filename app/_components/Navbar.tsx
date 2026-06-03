@@ -25,7 +25,7 @@ const navItems = [
   { href: '#technologies', label: 'Tecnologias' },
   { href: '#projects', label: 'Projetos' },
   { href: '#experience', label: 'Experiência' },
-  { href: '#blog', label: 'Blog' },
+  // { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Contato' },
 ]
 

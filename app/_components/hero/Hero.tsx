@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { cn } from '@/app/_lib/utils'
 
 import { Badge } from '../ui/badge'
-import BackgroundGlow from './BackgroundGlow'
-import FloatingBadge from './FloatingBadge'
+import BackgroundGlow from './_components/BackgroundGlow'
+import FloatingBadge from './_components/FloatingBadge'
 
 const Hero = () => {
   return (

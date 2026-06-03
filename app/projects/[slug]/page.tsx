@@ -8,16 +8,16 @@ import CodeBadge from '@/app/_components/CodeBadge'
 import { Button } from '@/app/_components/ui/button'
 import { cn } from '@/app/_lib/utils'
 
-import { getProjectBySlug, getProjects } from '../_data/projects'
+import { getProjectBySlug, getProjectSlugs } from '../_data/projects'
 
 type ProjectDetailPageProps = {
   params: Promise<{ slug: string }>
 }
 
 export const generateStaticParams = async () => {
-  const projects = await getProjects()
+  const slugs = await getProjectSlugs()
 
-  return projects.map((project) => ({ slug: project.slug }))
+  return slugs.map((slug) => ({ slug }))
 }
 
 export const generateMetadata = async ({
