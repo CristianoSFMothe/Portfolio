@@ -1,6 +1,15 @@
 import CodeBadge from '@/app/_components/CodeBadge'
+import RichText from '@/app/_components/RichText'
 
-const About = () => {
+import { getAbout } from './_data/about'
+
+const About = async () => {
+  const about = await getAbout()
+
+  if (!about) {
+    return null
+  }
+
   return (
     <section
       aria-labelledby='about-title'
@@ -15,24 +24,14 @@ const About = () => {
           data-qa='about-title'
           id='about-title'
         >
-          Perfil Profissional
+          {about.title}
         </h2>
       </div>
-      <div className='glass-panel p-8' data-qa='about-content'>
-        <p className='font-inter text-on-surface-variant mb-6 text-lg'>
-          Como Engenheiro de Software, dedico-me à criação de soluções robustas,
-          escaláveis e eficientes. Acredito firmemente nos princípios do Clean
-          Code e em arquiteturas bem estruturadas como base para qualquer
-          projeto de sucesso.
-        </p>
-        <p className='font-inter text-on-surface-variant text-lg'>
-          Meu foco está em desenvolver software que não apenas atenda aos
-          requisitos de negócios, mas que também seja sustentável a longo prazo,
-          otimizado para performance e fácil de manter. Trabalho constantemente
-          para aprimorar minhas habilidades e adotar as melhores práticas da
-          engenharia de software moderna.
-        </p>
-      </div>
+      <RichText
+        className='glass-panel font-inter text-on-surface-variant space-y-6 p-8 text-lg'
+        data-qa='about-content'
+        html={about.contentHtml}
+      />
     </section>
   )
 }

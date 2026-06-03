@@ -1,35 +1,25 @@
-const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT
+const HYGRAPH_URL = process.env.HYGRAPH_URL
 const HYGRAPH_TOKEN = process.env.HYGRAPH_TOKEN
 
-/** `true` quando o endpoint do Hygraph está configurado no ambiente. */
-export const isHygraphConfigured = (): boolean => Boolean(HYGRAPH_ENDPOINT)
+export const isHygraphConfigured = (): boolean => Boolean(HYGRAPH_URL)
 
 type FetchHygraphOptions = {
   variables?: Record<string, unknown>
-  /** Tempo de revalidação do cache (ISR), em segundos. Padrão: 1h. */
   revalidate?: number
-  /** Tags de cache para revalidação sob demanda (revalidateTag). */
   tags?: string[]
 }
 
-/**
- * Cliente genérico do Hygraph (Content API via GraphQL).
- *
- * Usa `fetch` nativo — integra com o cache do Next (ISR + tags), conforme a
- * doc oficial (https://hygraph.com/docs/implementations/next/next). As queries
- * usam variáveis (não interpolação) para evitar injeção.
- */
 export const fetchHygraph = async <T>(
   query: string,
   { variables, revalidate = 3600, tags }: FetchHygraphOptions = {},
 ): Promise<T> => {
-  if (!HYGRAPH_ENDPOINT) {
+  if (!HYGRAPH_URL) {
     throw new Error(
-      'HYGRAPH_ENDPOINT não configurado. Defina-o em .env.local (veja .env.example).',
+      'HYGRAPH_URL não configurado. Defina-o em .env (veja .env.example).',
     )
   }
 
-  const response = await fetch(HYGRAPH_ENDPOINT, {
+  const response = await fetch(HYGRAPH_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
