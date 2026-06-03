@@ -9,14 +9,12 @@ import {
   PROJECTS_QUERY,
 } from './queries'
 
+
 const PROJECT_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuD6KE_ifmdEuEfYj4jvCY-72IneI2w_R8PN20FkJER729bsrQS9wMSDMvKuO5HuRcFvf52Kd4yekJmGLvnYXbjgJYbWBGFZE-nOd5PKa2fBelTVy4VQg9gICkCol9qGGEbdeBAMbETXW3x31FoSj_NZJ_6vBSXXlEDAkZx1PFGdfj6S8Aq7h1iaOA1VIkyqi1CIzuGyk7KShI2ETfA0gn8nM7mDUbr5Qhle5AU0x4aaOQI1nEfdcdsoWhngHnvyXKn1G_wmOS2RNLY'
 
-/**
- * Mock usado enquanto o Hygraph não está configurado (sem `.env.local`).
- * Quando `HYGRAPH_ENDPOINT` existe, as funções abaixo passam a buscar do CMS.
- */
 const mockProjects: Project[] = [
+
   {
     id: 'cypress-e2e-framework',
     slug: 'cypress-e2e-framework',
@@ -67,7 +65,6 @@ const mockProjects: Project[] = [
   },
 ]
 
-/** Lista todos os projetos (cards da página /projects). */
 export const getProjects = async (): Promise<Project[]> => {
   if (!isHygraphConfigured()) {
     return mockProjects
@@ -81,13 +78,11 @@ export const getProjects = async (): Promise<Project[]> => {
   return projects.map(toProject)
 }
 
-/**
- * Busca um projeto pelo slug (rota /projects/[slug]).
- * Retorna `null` quando não encontra — a página chama `notFound()`.
- */
+
 export const getProjectBySlug = async (
   slug: string,
 ): Promise<Project | null> => {
+
   if (!isHygraphConfigured()) {
     return mockProjects.find((project) => project.slug === slug) ?? null
   }
@@ -100,7 +95,6 @@ export const getProjectBySlug = async (
   return project ? toProject(project) : null
 }
 
-/** Slugs de todos os projetos, para o generateStaticParams. */
 export const getProjectSlugs = async (): Promise<string[]> => {
   if (!isHygraphConfigured()) {
     return mockProjects.map((project) => project.slug)

@@ -106,6 +106,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
         </div>
 
         <div className='glass-card relative aspect-4/3 w-full overflow-hidden rounded-xl border border-white/10'>
+
           <Image
             src={project.imageSrc}
             alt={project.imageAlt}

@@ -34,7 +34,7 @@ const fieldClassName =
 
 const ContactForm = () => {
   const form = useForm<ContactFormValues>({
-    // Temporary cast for the resolver typings shipped with @hookform/resolvers 5.2.2 + zod 4.4.3.
+   
     resolver: zodResolver(contactFormSchema as never),
     defaultValues,
   })
@@ -154,10 +154,12 @@ const ContactForm = () => {
 
         <Button
           data-qa='contact-form-submit'
+
           className={cn(
             'btn-gradient to-secondary-container hover:shadow-glow-primary-strong',
             'h-auto w-full rounded-lg px-8 py-4 text-sm shadow-none',
           )}
+
           type='submit'
         >
           Enviar Mensagem

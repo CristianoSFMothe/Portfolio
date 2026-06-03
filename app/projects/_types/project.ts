@@ -17,5 +17,4 @@ export type Project = {
   detailHref?: string
   detailLabel?: string
   liveUrl?: string
-  repoUrl?: string
 }
