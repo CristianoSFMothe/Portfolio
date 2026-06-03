@@ -34,7 +34,7 @@ const fieldClassName =
 
 const ContactForm = () => {
   const form = useForm<ContactFormValues>({
-    // Temporary cast for the resolver typings shipped with @hookform/resolvers 5.2.2 + zod 4.4.3.
+   
     resolver: zodResolver(contactFormSchema as never),
     defaultValues,
   })
@@ -139,8 +139,9 @@ const ContactForm = () => {
                   className={cn(
                     fieldClassName,
                     'min-h-30 w-full resize-none transition-[color,box-shadow]',
-                    'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none',
-                    'aria-invalid:border-destructive aria-invalid:ring-destructive/20',
+                    'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+                    'aria-invalid:border-destructive focus-visible:outline-none',
+                    'aria-invalid:ring-destructive/20',
                   )}
                   data-qa='contact-form-message'
                   {...field}
@@ -153,7 +154,12 @@ const ContactForm = () => {
 
         <Button
           data-qa='contact-form-submit'
-          className='btn-gradient to-secondary-container hover:shadow-glow-primary-strong h-auto w-full rounded-lg px-8 py-4 text-sm shadow-none'
+
+          className={cn(
+            'btn-gradient to-secondary-container hover:shadow-glow-primary-strong',
+            'h-auto w-full rounded-lg px-8 py-4 text-sm shadow-none',
+          )}
+
           type='submit'
         >
           Enviar Mensagem

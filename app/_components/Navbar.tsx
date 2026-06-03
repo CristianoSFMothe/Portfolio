@@ -25,7 +25,7 @@ const navItems = [
   { href: '#technologies', label: 'Tecnologias' },
   { href: '#projects', label: 'Projetos' },
   { href: '#experience', label: 'Experiência' },
-  { href: '#blog', label: 'Blog' },
+  // { href: '#blog', label: 'Blog' },
   { href: '#contact', label: 'Contato' },
 ]
 
@@ -71,7 +71,10 @@ const Navbar = () => {
       >
         <Link
           href='/'
-          className='absolute left-1/2 flex shrink-0 -translate-x-1/2 items-center min-[1120px]:static min-[1120px]:translate-x-0'
+          className={cn(
+            'absolute left-1/2 flex shrink-0 -translate-x-1/2 items-center',
+            'min-[1120px]:static min-[1120px]:translate-x-0',
+          )}
           data-qa='navbar-home-link'
           onClick={handleCloseMenu}
         >
@@ -104,7 +107,8 @@ const Navbar = () => {
                   aria-current={isActive ? 'page' : undefined}
                   data-qa={getNavItemQa(item.href)}
                   className={cn(
-                    'font-jetbrains rounded-lg px-2 py-2 text-[13px] leading-none transition-all duration-300 xl:px-3',
+                    'font-jetbrains rounded-lg px-2 py-2 text-[13px] leading-none',
+                    'transition-all duration-300 xl:px-3',
                     isActive
                       ? 'border-secondary text-secondary border-b-2 font-bold'
                       : 'text-on-surface-variant hover:bg-primary/10 hover:text-primary font-medium',
@@ -145,7 +149,8 @@ const Navbar = () => {
               id='mobile-navigation'
               side='right'
               className={cn(
-                'bg-surface/95 w-[min(88vw,24rem)] border-l border-white/10 p-0 backdrop-blur-xl min-[1120px]:hidden',
+                'bg-surface/95 w-[min(88vw,24rem)] border-l border-white/10',
+                'p-0 backdrop-blur-xl min-[1120px]:hidden',
                 'shadow-[0_18px_40px_rgba(0,0,0,0.38)]',
               )}
               data-qa='navbar-mobile-sheet'

@@ -1,9 +1,20 @@
+import { fetchHygraph, isHygraphConfigured } from '@/app/_lib/hygraph'
+
+import type { HygraphProject } from '../_types/hygraph'
 import type { Project } from '../_types/project'
+import { toProject } from './mappers'
+import {
+  PROJECT_BY_SLUG_QUERY,
+  PROJECT_SLUGS_QUERY,
+  PROJECTS_QUERY,
+} from './queries'
+
 
 const PROJECT_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuD6KE_ifmdEuEfYj4jvCY-72IneI2w_R8PN20FkJER729bsrQS9wMSDMvKuO5HuRcFvf52Kd4yekJmGLvnYXbjgJYbWBGFZE-nOd5PKa2fBelTVy4VQg9gICkCol9qGGEbdeBAMbETXW3x31FoSj_NZJ_6vBSXXlEDAkZx1PFGdfj6S8Aq7h1iaOA1VIkyqi1CIzuGyk7KShI2ETfA0gn8nM7mDUbr5Qhle5AU0x4aaOQI1nEfdcdsoWhngHnvyXKn1G_wmOS2RNLY'
 
-const projects: Project[] = [
+const mockProjects: Project[] = [
+
   {
     id: 'cypress-e2e-framework',
     slug: 'cypress-e2e-framework',
@@ -55,15 +66,44 @@ const projects: Project[] = [
 ]
 
 export const getProjects = async (): Promise<Project[]> => {
-  return projects
+  if (!isHygraphConfigured()) {
+    return mockProjects
+  }
+
+  const { projects } = await fetchHygraph<{ projects: HygraphProject[] }>(
+    PROJECTS_QUERY,
+    { tags: ['projects'] },
+  )
+
+  return projects.map(toProject)
 }
 
-/**
- * Busca um projeto pelo slug (usado na rota /projects/[slug]).
- * Retorna `null` quando não encontra — a página chama `notFound()`.
- */
+
 export const getProjectBySlug = async (
   slug: string,
 ): Promise<Project | null> => {
-  return projects.find((project) => project.slug === slug) ?? null
+
+  if (!isHygraphConfigured()) {
+    return mockProjects.find((project) => project.slug === slug) ?? null
+  }
+
+  const { project } = await fetchHygraph<{ project: HygraphProject | null }>(
+    PROJECT_BY_SLUG_QUERY,
+    { variables: { slug }, tags: ['projects'] },
+  )
+
+  return project ? toProject(project) : null
+}
+
+export const getProjectSlugs = async (): Promise<string[]> => {
+  if (!isHygraphConfigured()) {
+    return mockProjects.map((project) => project.slug)
+  }
+
+  const { projects } = await fetchHygraph<{ projects: { slug: string }[] }>(
+    PROJECT_SLUGS_QUERY,
+    { tags: ['projects'] },
+  )
+
+  return projects.map((project) => project.slug)
 }

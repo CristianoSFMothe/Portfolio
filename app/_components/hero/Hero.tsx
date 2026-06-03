@@ -2,13 +2,21 @@ import { ArrowRight, Cloud, Code2, Database } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import RichText from '@/app/_components/RichText'
 import { cn } from '@/app/_lib/utils'
 
 import { Badge } from '../ui/badge'
-import BackgroundGlow from './BackgroundGlow'
-import FloatingBadge from './FloatingBadge'
+import BackgroundGlow from './_components/BackgroundGlow'
+import FloatingBadge from './_components/FloatingBadge'
+import { getHero } from './_data/hero'
 
-const Hero = () => {
+const Hero = async () => {
+  const hero = await getHero()
+
+  if (!hero) {
+    return null
+  }
+
   return (
     <div
       className='mx-auto max-w-368 px-6 sm:px-6 lg:px-10 xl:px-12'
@@ -48,7 +56,7 @@ const Hero = () => {
           data-qa='hero-content'
         >
           <Badge
-            aria-label='Status profissional: open to work'
+            aria-label={`Status profissional: ${hero.workStatus}`}
             className={cn(
               'border-primary/30 bg-primary/5 font-jetbrains text-primary',
               'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm',
@@ -59,7 +67,7 @@ const Hero = () => {
               aria-hidden='true'
               className='bg-secondary h-2 w-2 animate-pulse rounded-full'
             ></span>
-            Open to work
+            {hero.workStatus}
           </Badge>
 
           <h1
@@ -70,52 +78,53 @@ const Hero = () => {
             data-qa='hero-title'
             id='hero-title'
           >
-            Engenheiro de Software focado em construir{' '}
+            {hero.title}{' '}
             <span className='from-primary to-secondary neon-text-glow bg-linear-to-r bg-clip-text text-transparent'>
-              soluções robustas
+              {hero.highlightedText}
             </span>{' '}
-            e escaláveis
+            {hero.titleSuffix}
           </h1>
 
-          <p
+          <RichText
             className='font-inter text-on-surface-variant max-w-xl text-base sm:text-lg'
             data-qa='hero-description'
+            html={hero.descriptionHtml}
             id='hero-description'
-          >
-            Sou Cristiano Ferreira, um desenvolvedor com paixão por código
-            limpo, arquitetura eficiente e inovação constante. Construo
-            aplicações modernas focadas em performance e experiência do usuário.
-          </p>
+          />
 
           <div
             aria-label='Acoes principais'
-            className='flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 sm:pt-4 lg:justify-start'
+            className={cn(
+              'flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:justify-center',
+              'sm:gap-4 sm:pt-4 lg:justify-start',
+            )}
             data-qa='hero-actions'
             role='group'
           >
             <Link
-              aria-label='Ver projetos'
+              aria-label={hero.primaryButtonText}
               className={cn(
                 'btn-gradient to-inverse-primary flex w-full items-center justify-center gap-2',
                 'rounded-lg border border-white/20 px-8 py-3 text-sm sm:w-auto',
                 'hover:shadow-glow-primary-strong',
               )}
               data-qa='hero-projects-link'
-              href='#projects'
+              href={hero.primaryButtonLink}
             >
-              Ver projetos
+              {hero.primaryButtonText}
               <ArrowRight aria-hidden='true' size={20} />
             </Link>
             <Link
-              aria-label='Entrar em contato'
+              aria-label={hero.secondaryButtonText}
               className={cn(
-                'glass-panel font-jetbrains text-primary hover:bg-primary/10 flex w-full items-center justify-center gap-2',
-                'rounded-lg px-8 py-3 text-sm font-bold transition-all duration-300 sm:w-auto',
+                'glass-panel font-jetbrains text-primary hover:bg-primary/10 flex w-full',
+                'items-center justify-center gap-2 rounded-lg px-8 py-3 text-sm',
+                'font-bold transition-all duration-300 sm:w-auto',
               )}
               data-qa='hero-contact-link'
-              href='#contact'
+              href={hero.secondaryButtonLink}
             >
-              Entrar em contato
+              {hero.secondaryButtonText}
             </Link>
           </div>
         </header>
@@ -139,8 +148,8 @@ const Hero = () => {
               data-qa='hero-image-glow'
             ></div>
             <Image
-              src='https://lh3.googleusercontent.com/aida-public/AB6AXuDLJ4cO3gUKt9PY-2nj26oUJxfbaEpKthPxT59HU-AJSpJeOsTkyzRd84iPR-1EaEch-uh6TZxXyYFjM1y0_CThfM2jmayIsoO-dlqQ163KLILugvYgA-yVf5Uw9u-yPZO1gZn_mDWBHcMXoJALop0ucwi2JgCfxjD33TP-8LwrgVv9k_qnEwzy-2ksvtySTMos0oJMBVpVlu19JI7muryAy0g5i1zuLv8Fu36xGW8bkRvUrW-s0KiLRheR7JFT9Gv_HXTI9ziF6b8'
-              alt='Coding workspace'
+              src={hero.imageUrl}
+              alt={hero.imageAlt}
               fill
               className='relative z-10 h-full w-full rounded-2xl border border-white/10 object-cover shadow-2xl'
               data-qa='hero-image'

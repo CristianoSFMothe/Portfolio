@@ -1,6 +1,5 @@
 import About from './_components/about/About'
 import Academic from './_components/academic/Academic'
-import Blog from './_components/blog/Blog'
 import Contact from './_components/contact/Contact'
 import Experience from './_components/experience/Experience'
 import Hero from './_components/hero/Hero'
@@ -16,7 +15,7 @@ export default function Home() {
       <Projects />
       <Technologies />
       <Experience />
-      <Blog />
+      {/* <Blog /> */}
       <Contact />
     </main>
   )
