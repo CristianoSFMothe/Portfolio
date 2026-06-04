@@ -1,5 +1,6 @@
 import CodeBadge from '@/app/_components/CodeBadge'
 import RichText from '@/app/_components/RichText'
+import { cn } from '@/app/_lib/utils'
 
 import { getAbout } from './_data/about'
 
@@ -28,7 +29,11 @@ const About = async () => {
         </h2>
       </div>
       <RichText
-        className='glass-panel font-inter text-on-surface-variant space-y-6 p-8 text-lg'
+        className={cn(
+          'glass-panel font-inter text-on-surface-variant space-y-6',
+          'p-8 text-lg [&_code]:wrap-break-word [&_code]:whitespace-pre-wrap',
+          '[&_pre]:wrap-break-word [&_pre]:whitespace-pre-wrap',
+        )}
         data-qa='about-content'
         html={about.contentHtml}
       />

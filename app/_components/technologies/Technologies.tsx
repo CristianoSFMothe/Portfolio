@@ -1,80 +1,14 @@
-'use client'
-
-import {
-  Box,
-  Cloud,
-  Code2,
-  Database,
-  GitMerge,
-  Layers,
-  Terminal,
-} from 'lucide-react'
-import * as React from 'react'
-
 import CodeBadge from '@/app/_components/CodeBadge'
-import {
-  Carousel,
-  type CarouselApi,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/app/_components/ui/carousel'
 
-import TechnologyCard from './_component/TechnologyCard'
+import TechnologiesCarousel from './_component/TechnologiesCarousel'
+import { getTechnologies } from './_data/technologies'
 
-const AUTOPLAY_DELAY = 4000
+const Technologies = async () => {
+  const technologies = await getTechnologies()
 
-const technologies = [
-  {
-    icon: <Code2 size={36} className='text-primary' />,
-    label: 'JS / TS',
-  },
-  {
-    icon: <Layers size={36} className='text-secondary' />,
-    label: 'React / Next.js',
-  },
-  {
-    icon: <Terminal size={36} className='text-tertiary' />,
-    label: 'Node.js / Express',
-  },
-  {
-    icon: <Database size={36} className='text-primary' />,
-    label: 'PostgreSQL / MongoDB',
-  },
-  {
-    icon: <Cloud size={36} className='text-secondary' />,
-    label: 'AWS / Azure',
-  },
-  {
-    icon: <Box size={36} className='text-tertiary' />,
-    label: 'Docker / Kubernetes',
-  },
-  {
-    icon: <GitMerge size={36} className='text-primary' />,
-    label: 'CI/CD / Git',
-  },
-  {
-    icon: <Layers size={36} className='text-secondary' />,
-    label: 'Microsserviços',
-  },
-]
-
-const Technologies = () => {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [isPaused, setIsPaused] = React.useState(false)
-
-  React.useEffect(() => {
-    if (!api || isPaused) return
-
-    const intervalId = window.setInterval(() => {
-      api.scrollNext()
-    }, AUTOPLAY_DELAY)
-
-    return () => {
-      window.clearInterval(intervalId)
-    }
-  }, [api, isPaused])
+  if (technologies.length === 0) {
+    return null
+  }
 
   return (
     <section
@@ -94,38 +28,7 @@ const Technologies = () => {
         </h2>
       </div>
 
-      <Carousel
-        aria-label='Tecnologias'
-        className='mx-auto w-full'
-        data-qa='technologies-carousel'
-        onBlurCapture={() => setIsPaused(false)}
-        onFocusCapture={() => setIsPaused(true)}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        opts={{ align: 'start', loop: true }}
-        setApi={setApi}
-      >
-        <CarouselContent className='py-3'>
-          {technologies.map((technology) => (
-            <CarouselItem
-              key={technology.label}
-              className='basis-full sm:basis-1/2 lg:basis-1/4'
-            >
-              <TechnologyCard icon={technology.icon} label={technology.label} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious
-          aria-label='Tecnologia anterior'
-          className='bg-surface/80 text-on-surface hover:bg-surface -left-4 hidden border-white/10 md:flex lg:-left-5'
-          data-qa='technologies-carousel-previous'
-        />
-        <CarouselNext
-          aria-label='Próxima tecnologia'
-          className='bg-surface/80 text-on-surface hover:bg-surface -right-4 hidden border-white/10 md:flex lg:-right-5'
-          data-qa='technologies-carousel-next'
-        />
-      </Carousel>
+      <TechnologiesCarousel technologies={technologies} />
     </section>
   )
 }
