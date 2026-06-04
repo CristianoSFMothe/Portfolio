@@ -11,7 +11,7 @@ const Projects = () => {
       data-qa='projects-section'
       id='projects'
     >
-      <div className='mb-12' data-qa='projects-header'>
+      <div className='mb-12' data-qa='projects-header' data-reveal='up'>
         <CodeBadge label='featured-work' />
         <h2
           className='font-jakarta text-on-surface text-3xl font-bold'
@@ -22,7 +22,12 @@ const Projects = () => {
         </h2>
       </div>
 
-      <div className='mb-12 space-y-12' data-qa='projects-list'>
+      <div
+        className='mb-12 space-y-12'
+        data-qa='projects-list'
+        data-reveal='up'
+        data-reveal-delay='120'
+      >
         <ProjectCard
           title='Plataforma de E-Commerce Global'
           description='Arquitetura e desenvolvimento de uma plataforma de e-commerce altamente escalável, capaz de processar milhares de transações simultâneas com latência mínima.'
@@ -69,7 +74,11 @@ const Projects = () => {
         />
       </div>
 
-      <div className='glass-panel p-8 text-center' data-qa='projects-cta'>
+      <div
+        className='glass-panel p-8 text-center'
+        data-qa='projects-cta'
+        data-reveal='up'
+      >
         <p className='font-inter text-on-surface mb-6 text-lg'>
           Interessado em ver mais soluções que construí?
         </p>

@@ -1,3 +1,4 @@
+import 'lenis/dist/lenis.css'
 import './globals.css'
 
 import type { Metadata, Viewport } from 'next'
@@ -5,7 +6,10 @@ import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 
 import BackToTopButton from './_components/BackToTopButton'
 import Footer from './_components/Footer'
+import LenisProvider from './_components/LenisProvider'
 import Navbar from './_components/Navbar'
+import ScrollEffects from './_components/ScrollEffects'
+import SleekLineCursor from './_components/SleekLineCursor'
 import ThemeProvider from './_components/ThemeProvider'
 import { Toaster } from './_components/ui/sonner'
 
@@ -103,8 +107,11 @@ export default function RootLayout({
           defaultTheme='dark'
           enableSystem={false}
         >
+          <LenisProvider />
           <Navbar />
           {children}
+          <ScrollEffects />
+          <SleekLineCursor />
           <BackToTopButton />
           <Footer />
           <Toaster richColors />

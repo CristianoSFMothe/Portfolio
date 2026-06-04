@@ -17,6 +17,8 @@ export type ExperienceTimelineItemProps = {
   responsibilities: string[]
   skills: string[]
   className?: string
+  reveal?: 'up' | 'left' | 'right' | 'scale'
+  revealDelay?: number
 }
 
 const ExperienceTimelineItem = ({
@@ -26,6 +28,8 @@ const ExperienceTimelineItem = ({
   responsibilities,
   skills,
   className,
+  reveal = 'up',
+  revealDelay = 0,
 }: ExperienceTimelineItemProps) => {
   const qaSlug = company.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 
@@ -33,6 +37,8 @@ const ExperienceTimelineItem = ({
     <div
       className='group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'
       data-qa={`experience-item-${qaSlug}`}
+      data-reveal={reveal}
+      data-reveal-delay={`${revealDelay}`}
     >
       <div
         aria-hidden='true'

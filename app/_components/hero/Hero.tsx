@@ -5,6 +5,7 @@ import Link from 'next/link'
 import RichText from '@/app/_components/RichText'
 import { cn } from '@/app/_lib/utils'
 
+import BlurReveal from '../BlurReveal'
 import { Badge } from '../ui/badge'
 import BackgroundGlow from './_components/BackgroundGlow'
 import FloatingBadge from './_components/FloatingBadge'
@@ -62,6 +63,7 @@ const Hero = async () => {
               'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm',
             )}
             data-qa='hero-status-badge'
+            data-reveal='up'
           >
             <span
               aria-hidden='true'
@@ -70,24 +72,32 @@ const Hero = async () => {
             {hero.workStatus}
           </Badge>
 
-          <h1
+          <BlurReveal
+            as='h1'
+            blur='12px'
             className={cn(
               'font-jakarta text-on-surface max-w-[12ch] text-4xl leading-tight',
               'font-extrabold tracking-tight sm:max-w-[14ch] sm:text-5xl xl:text-6xl',
             )}
+            delay={0.04}
             data-qa='hero-title'
+            duration={1.15}
             id='hero-title'
+            once={false}
+            yOffset={12}
           >
             {hero.title}{' '}
             <span className='from-primary to-secondary neon-text-glow bg-linear-to-r bg-clip-text text-transparent'>
               {hero.highlightedText}
             </span>{' '}
             {hero.titleSuffix}
-          </h1>
+          </BlurReveal>
 
           <RichText
             className='font-inter text-on-surface-variant max-w-xl text-base sm:text-lg'
             data-qa='hero-description'
+            data-reveal='up'
+            data-reveal-delay='120'
             html={hero.descriptionHtml}
             id='hero-description'
           />
@@ -99,6 +109,8 @@ const Hero = async () => {
               'sm:gap-4 sm:pt-4 lg:justify-start',
             )}
             data-qa='hero-actions'
+            data-reveal='up'
+            data-reveal-delay='180'
             role='group'
           >
             <Link
@@ -133,6 +145,8 @@ const Hero = async () => {
           aria-labelledby='hero-visual-caption'
           className='relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-10 xl:pr-16'
           data-qa='hero-visual'
+          data-reveal='right'
+          data-reveal-delay='120'
         >
           <figcaption className='sr-only' id='hero-visual-caption'>
             Workspace de desenvolvimento com badges de Backend Dev, Frontend Dev

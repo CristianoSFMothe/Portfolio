@@ -17,7 +17,7 @@ const Technologies = async () => {
       data-qa='technologies-section'
       id='technologies'
     >
-      <div className='mb-12' data-qa='technologies-header'>
+      <div className='mb-12' data-qa='technologies-header' data-reveal='up'>
         <CodeBadge label='tech-stack' />
         <h2
           className='font-jakarta text-on-surface text-3xl font-bold'
@@ -28,7 +28,9 @@ const Technologies = async () => {
         </h2>
       </div>
 
-      <TechnologiesCarousel technologies={technologies} />
+      <div data-reveal='up' data-reveal-delay='100'>
+        <TechnologiesCarousel technologies={technologies} />
+      </div>
     </section>
   )
 }
