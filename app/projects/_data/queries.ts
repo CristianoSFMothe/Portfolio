@@ -1,7 +1,4 @@
-/** Queries GraphQL da feature de projetos (Hygraph Content API). */
-
-/** Lista usada na página /projects (cards). */
-export const PROJECTS_QUERY = /* GraphQL */ `
+export const PROJECTS_QUERY = `
   query Projects {
     projects(orderBy: createdAt_DESC) {
       id
@@ -18,8 +15,7 @@ export const PROJECTS_QUERY = /* GraphQL */ `
   }
 `
 
-/** Detalhe de um projeto pela rota /projects/[slug]. */
-export const PROJECT_BY_SLUG_QUERY = /* GraphQL */ `
+export const PROJECT_BY_SLUG_QUERY = `
   query ProjectBySlug($slug: String!) {
     project(where: { slug: $slug }) {
       id
@@ -38,8 +34,7 @@ export const PROJECT_BY_SLUG_QUERY = /* GraphQL */ `
   }
 `
 
-/** Apenas os slugs, para o generateStaticParams. */
-export const PROJECT_SLUGS_QUERY = /* GraphQL */ `
+export const PROJECT_SLUGS_QUERY = `
   query ProjectSlugs {
     projects(first: 100) {
       slug

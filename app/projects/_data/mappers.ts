@@ -1,14 +1,8 @@
 import type { HygraphProject } from '../_types/hygraph'
 import type { Project, ProjectTechTone } from '../_types/project'
 
-/**
- * Tons aplicados às tags de tecnologia. O Hygraph não tem esse conceito
- * (é puramente visual), então ciclamos de forma determinística pelo índice
- * para preservar a variação de cores do design.
- */
 const TONES: ProjectTechTone[] = ['primary', 'tertiary', 'neutral']
 
-/** Converte o projeto cru do Hygraph para o tipo de domínio usado pela UI. */
 export const toProject = (raw: HygraphProject): Project => ({
   id: raw.id,
   slug: raw.slug,
