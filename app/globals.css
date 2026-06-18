@@ -345,3 +345,13 @@
     }
   }
 }
+
+/*
+ * Esconde o cursor nativo onde a trilha do Sleek Line Cursor roda
+ * (ponteiro fino). Em touch/coarse o cursor segue normal.
+ */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}

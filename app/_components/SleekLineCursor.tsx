@@ -153,15 +153,6 @@ const SleekLineCursor = ({
       return
     }
 
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
-
-    if (prefersReducedMotion || !hasFinePointer) {
-      return
-    }
-
     const context = canvas.getContext('2d')
     if (!context) {
       return
@@ -180,11 +171,13 @@ const SleekLineCursor = ({
       y: window.innerHeight / 2,
     }
 
+    // Hue oscilando entre ~177° (ciano #47faf3) e ~222° (azul #aec6ff),
+    // mantendo a trilha dentro da paleta de destaque do site.
     const hueWave = new Wave({
       phase: Math.random() * 2 * Math.PI,
-      amplitude: 85,
-      frequency: 0.0015,
-      offset: 285,
+      amplitude: 25,
+      frequency: 0.0018,
+      offset: 200,
     })
 
     let lines: Line[] = []
@@ -220,8 +213,8 @@ const SleekLineCursor = ({
       context.globalCompositeOperation = 'source-over'
       context.clearRect(0, 0, window.innerWidth, window.innerHeight)
       context.globalCompositeOperation = 'lighter'
-      context.strokeStyle = `hsla(${Math.round(hueWave.update())},50%,50%,0.2)`
-      context.lineWidth = 1
+      context.strokeStyle = `hsla(${Math.round(hueWave.update())}, 90%, 62%, 0.25)`
+      context.lineWidth = 1.1
 
       for (const line of lines) {
         line.update(environment, position)
@@ -242,9 +235,14 @@ const SleekLineCursor = ({
       render()
     }
 
-    const handlePointerMove = (event: PointerEvent) => {
-      position.x = event.clientX
-      position.y = event.clientY
+    const updatePosition = (event: MouseEvent | TouchEvent) => {
+      if ('touches' in event) {
+        position.x = event.touches[0].clientX
+        position.y = event.touches[0].clientY
+      } else {
+        position.x = event.clientX
+        position.y = event.clientY
+      }
 
       start()
     }
@@ -264,8 +262,12 @@ const SleekLineCursor = ({
     }
 
     resizeCanvas()
+    // Inicia já (linhas no centro), sem depender do primeiro movimento.
+    start()
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    document.addEventListener('mousemove', updatePosition, { passive: true })
+    document.addEventListener('touchmove', updatePosition, { passive: true })
+    document.addEventListener('touchstart', updatePosition, { passive: true })
     window.addEventListener('resize', resizeCanvas)
     window.addEventListener('orientationchange', resizeCanvas)
     window.addEventListener('focus', handleFocus)
@@ -274,7 +276,9 @@ const SleekLineCursor = ({
     return () => {
       isRunning = false
       window.cancelAnimationFrame(frameId)
-      window.removeEventListener('pointermove', handlePointerMove)
+      document.removeEventListener('mousemove', updatePosition)
+      document.removeEventListener('touchmove', updatePosition)
+      document.removeEventListener('touchstart', updatePosition)
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('orientationchange', resizeCanvas)
       window.removeEventListener('focus', handleFocus)
@@ -286,7 +290,7 @@ const SleekLineCursor = ({
     <canvas
       ref={canvasRef}
       aria-hidden='true'
-      className={cn('pointer-events-none fixed inset-0 z-40', className)}
+      className={cn('pointer-events-none fixed inset-0 z-50', className)}
     />
   )
 }

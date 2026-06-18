@@ -37,8 +37,13 @@ const LenisProvider = () => {
         autoRaf: true,
         anchors: true,
         allowNestedScroll: true,
-        lerp: 0.08,
+        // Modo duration + easing (recomendado pela doc do Lenis) no lugar de
+        // `lerp`: dá uma curva de scroll suave e controlada. Easing oficial.
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.5,
         stopInertiaOnNavigate: true,
       }}
     />
